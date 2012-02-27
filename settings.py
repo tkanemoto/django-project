@@ -120,7 +120,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     # Basic Apps dependencies
-    'django.contrib.comments',
+    # 'django.contrib.comments',
     'django.contrib.markup',
     'tagging',
     # Basic Apps
@@ -166,3 +166,5 @@ LOGGING = {
         },
     }
 }
+
+COMMENTS_APP = 'basic.comments'
