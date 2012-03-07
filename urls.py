@@ -37,3 +37,13 @@ urlpatterns = patterns('',
     url(r'^relationships/', include('basic.relationships.urls')),
     # url(r'^tools/', include('basic.tools.urls')),
 )
+
+from django.conf import settings
+
+if settings.DEBUG:
+    from django.views.static import serve
+    if settings.MEDIA_URL.startswith('/'):
+        media_url = settings.MEDIA_URL[1:]
+        urlpatterns += patterns('',
+                                (r'^%s(?P<path>.*)$' % media_url, serve,
+                                 {'document_root': settings.MEDIA_ROOT}))

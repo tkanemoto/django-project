@@ -1,5 +1,10 @@
 # Django settings for stage project.
 
+import os
+from os.path import abspath, dirname, join
+PROJECT_ROOT = dirname(abspath(__file__))
+SITE_ROOT = dirname(PROJECT_ROOT)
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -12,7 +17,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',   # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': join(PROJECT_ROOT, 'sqlite3.db'), # Or path to database file if using sqlite3.
+        'NAME': join(SITE_ROOT, 'sqlite3.db'), # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -45,18 +50,18 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = join(PROJECT_ROOT, 'media') + os.sep
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = join(PROJECT_ROOT, 'static') + os.sep
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
