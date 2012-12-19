@@ -36,6 +36,7 @@ urlpatterns = patterns('',
     url(r'^profiles/', include('basic.profiles.urls')),
     url(r'^relationships/', include('basic.relationships.urls')),
     # url(r'^tools/', include('basic.tools.urls')),
+    url(r'^player/', include('player.urls')),
 )
 
 from django.conf import settings

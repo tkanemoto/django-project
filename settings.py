@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'basic.profiles',
     'basic.relationships',
     'basic.tools',
+    'player',
     'pagination',
 )
 
