@@ -4,4 +4,5 @@ django_evolution
 django-tagging
 python-dateutil
 -e git://github.com/tomster/py-transmission#egg=py-transmission
+-e git://github.com/7k/django-basic-apps#egg=master
 django-registration
