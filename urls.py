@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     url(r'^relationships/', include('basic.relationships.urls')),
     # url(r'^tools/', include('basic.tools.urls')),
     url(r'^player/', include('player.urls')),
+    url(r'^torrent/', include('torrent.urls')),
 )
 
 from django.conf import settings
