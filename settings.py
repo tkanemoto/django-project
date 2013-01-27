@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'tagging',
     'django_evolution',
+    'pagination',
     # Basic Apps
     'basic.blog',
     'basic.bookmarks',
@@ -148,8 +149,9 @@ INSTALLED_APPS = (
     'basic.profiles',
     'basic.relationships',
     'basic.tools',
+    'base',
     'player',
-    'pagination',
+    'torrent',
 )
 
 # A sample logging configuration. The only tangible logging
