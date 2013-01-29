@@ -1,0 +1,16 @@
+{% load tree_menu_tags %}
+{% with menu_item.has_children as has_children %}
+<li {% if has_children %}class="dropdown"{% endif %}>
+  <a {% if has_children %}data-toggle="dropdown" data-target="#"{% endif %}
+     class="{% if has_children %}dropdown-toggle {% endif %}{{ menu_item.caption|slugify }}"
+     href="{% if menu_item.named_url %}{% reverse_named_url menu_item.named_url %}{% else %}{{ menu_item.url }}{% endif %}">
+    {{ menu_item.caption }}
+    {% if has_children %}<b class="caret"></b>{% endif %}
+  </a>
+  {% if has_children %}
+    <ul class="dropdown-menu">
+      {% for child in menu_item.children %}{% show_menu_item child %}{% endfor %}
+    </ul>
+  {% endif %}
+</li>
+{% endwith %}
