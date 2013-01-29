@@ -111,6 +111,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    join(PROJECT_ROOT, 'templates')
 )
 
 INSTALLED_APPS = (
@@ -132,6 +133,10 @@ INSTALLED_APPS = (
     'pagination',
     'treemenus',
     'gravatar',
+    # Apps
+    'base',
+    'player',
+    'torrent',
     # Basic Apps
     'basic.blog',
     'basic.bookmarks',
@@ -151,9 +156,6 @@ INSTALLED_APPS = (
     'basic.profiles',
     'basic.relationships',
     'basic.tools',
-    'base',
-    'player',
-    'torrent',
 )
 
 # A sample logging configuration. The only tangible logging
