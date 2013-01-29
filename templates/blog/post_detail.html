@@ -1,0 +1,63 @@
+{% extends "blog/base_blog.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ object.title }}{% endblock %}
+{% block body_class %}{{ block.super }} post_detail{% endblock %}
+{% block body_id %}post_{{ object.id }}{% endblock %}
+
+
+{% block content_title %}
+  <h2>{{ object.title }}</h2>
+  <p class="other_posts">
+    {% if object.get_previous_by_publish %}
+    <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}" title="{% trans "View previous post" %}">&laquo; {{ object.get_previous_post }}</a>
+    {% endif %}
+    {% if object.get_next_by_publish %}
+    | <a class="next" href="{{ object.get_next_post.get_absolute_url }}" title="{% trans "View next post" %}">{{ object.get_next_post }} &raquo;</a>
+    {% endif %}
+  </p>
+{% endblock %}
+
+
+{% block content %}
+  {% load blog comments tagging_tags inlines markup gravatar %}
+
+  <h5 class="author">
+    {% if object.author %}
+    <a href="{{ object.author.get_absolute_url }}"
+       title="View {{ object.author.get_full_name }}'s profile"
+       class="avatar"
+       style="background-image: url({% gravatar_for_email object.author.email 48 %})">{{ forloop.counter }}</a>
+    By
+    <a href="{{ object.author.get_absolute_url }}"
+       title="View {{ object.author.get_full_name }}'s profile">
+      {{ object.author.get_full_name }}
+    </a>
+    <p class="date">On {{ object.publish|date:"j F Y" }}</p>
+    {% endif %}
+  </h5>
+
+  <div class="body">
+    {{ object.body|render_inlines|markdown }}
+  </div>
+
+  {% tags_for_object object as tag_list %}
+  {% if tag_list %}
+  <p class="inline_tag_list"><strong>{% trans "Related tags" %}:</strong>
+    {{ tag_list|join:", " }}
+  </p>
+  {% endif %}
+
+  {% render_comment_list for object %}
+
+  {% if object.allow_comments %}
+    {% render_comment_form for object %}
+  {% else %}
+    <div class="well">
+      <h3>Comments are closed.</h3>
+      <p>Comments have been closed for this post.</p>
+    </div>
+  {% endif %}
+
+{% endblock %}
