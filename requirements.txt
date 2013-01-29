@@ -6,3 +6,7 @@ python-dateutil
 transmissionrpc
 -e git://github.com/7k/django-basic-apps#egg=django-basic-apps
 django-registration
+markdown
+beautifulsoup
+django-treemenus
+django-gravatar
