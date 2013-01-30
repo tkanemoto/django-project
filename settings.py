@@ -119,6 +119,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django_openid_auth',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
@@ -182,3 +183,17 @@ LOGGING = {
 }
 
 COMMENTS_APP = 'basic.comments'
+
+AUTHENTICATION_BACKENDS = (
+    'django_openid_auth.auth.OpenIDBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+OPENID_CREATE_USERS = True
+OPENID_UPDATE_DETAILS_FROM_SREG = True
+OPENID_SSO_SERVER_URL = 'https://www.google.com/accounts/o8/id'
+OPENID_USE_AS_ADMIN_LOGIN = True
+# OPENID_STRICT_USERNAMES = True
+OPENID_USE_EMAIL_FOR_USERNAME = True
+
+LOGIN_URL = '/openid/login/'
+LOGIN_REDIRECT_URL = '/blog/'

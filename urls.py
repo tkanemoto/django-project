@@ -36,8 +36,11 @@ urlpatterns = patterns('',
     url(r'^profiles/', include('basic.profiles.urls')),
     url(r'^relationships/', include('basic.relationships.urls')),
     # url(r'^tools/', include('basic.tools.urls')),
+    # Apps
     url(r'^player/', include('player.urls')),
     url(r'^torrent/', include('torrent.urls')),
+    # Login
+    (r'^openid/', include('django_openid_auth.urls')),
 )
 
 from django.conf import settings
