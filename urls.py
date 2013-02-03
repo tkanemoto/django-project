@@ -40,7 +40,8 @@ urlpatterns = patterns('',
     url(r'^player/', include('player.urls')),
     url(r'^torrent/', include('torrent.urls')),
     # Login
-    (r'^openid/', include('django_openid_auth.urls')),
+    url(r'^openid/', include('django_openid_auth.urls')),
+    url(r'^auth/', include('django.contrib.auth.urls')),
 )
 
 from django.conf import settings
