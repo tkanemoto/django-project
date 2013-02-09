@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 
+from basic.blog.feeds import BlogPostsFeed
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -19,6 +21,7 @@ urlpatterns = patterns('',
     # (r'^comments/', include('django.contrib.comments.urls')),
     # Basic Apps
     url(r'^blog/', include('basic.blog.urls')),
+    url(r'^blog/rss', BlogPostsFeed()),
     url(r'^bookmarks/', include('basic.bookmarks.urls')),
     url(r'^books/', include('basic.books.urls')),
     url(r'^comments/', include('basic.comments.urls')),
