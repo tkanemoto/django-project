@@ -33,7 +33,7 @@ urlpatterns = patterns('',
     url(r'^music/', include('basic.music.urls')),
     url(r'^people/', include('basic.people.urls')),
     url(r'^places/', include('basic.places.urls')),
-    url(r'^profiles/', include('basic.profiles.urls')),
+    url(r'^users/', include('basic.profiles.urls')),
     url(r'^relationships/', include('basic.relationships.urls')),
     # url(r'^tools/', include('basic.tools.urls')),
     # Apps
