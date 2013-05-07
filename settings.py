@@ -1,9 +1,13 @@
 # Django settings for stage project.
 
 import os
+import sys
 from os.path import abspath, dirname, join
 PROJECT_ROOT = dirname(abspath(__file__))
 SITE_ROOT = dirname(PROJECT_ROOT)
+
+sys.path.append(PROJECT_ROOT)
+sys.path.append(SITE_ROOT)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
