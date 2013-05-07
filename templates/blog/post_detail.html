@@ -39,7 +39,7 @@
   </h5>
 
   <div class="body">
-    {{ object.body|render_inlines|markdown }}
+    {{ object.body|safe|render_inlines|markdown }}
   </div>
 
   {% tags_for_object object as tag_list %}
