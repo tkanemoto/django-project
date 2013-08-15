@@ -52,7 +52,11 @@
   {% render_comment_list for object %}
 
   {% if object.allow_comments %}
-    {% render_comment_form for object %}
+    {% if request.user.is_authenticated %}
+      {% render_comment_form for object %}
+    {% else %}
+      <a href="{% url openid-login %}?next={{ request.path_info }}">Log in using OpenID</a> to comment.
+    {% endif %}
   {% else %}
     <div class="well">
       <h3>Comments are closed.</h3>
