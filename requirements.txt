@@ -12,3 +12,4 @@ django-treemenus
 django-gravatar
 python-openid
 django-openid-auth
+django-filebrowser

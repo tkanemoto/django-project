@@ -2,6 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from filebrowser.sites import site as filebrowser_site
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -11,7 +13,7 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
+    url(r'^admin/filebrowser/', include(filebrowser_site.urls)),
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 
@@ -43,6 +45,7 @@ urlpatterns = patterns('',
     # Login
     url(r'^openid/', include('django_openid_auth.urls')),
     url(r'^auth/', include('django.contrib.auth.urls')),
+    url(r'^grappelli/', include('grappelli.urls')),
 )
 
 from django.conf import settings

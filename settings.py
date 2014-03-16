@@ -136,6 +136,8 @@ INSTALLED_APPS = (
     'django_openid_auth',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'grappelli',
+    'filebrowser',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
