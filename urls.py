@@ -50,10 +50,19 @@ urlpatterns = patterns('',
 
 from django.conf import settings
 
-if settings.DEBUG:
+from django.contrib.auth.decorators import login_required, user_passes_test
+def media_access(user):
+    return user.is_staff or \
+        user.groups.filter(name__in=['media-access', 'admins']).exists()
+
+#if settings.DEBUG:
+if True:
     from django.views.static import serve
     if settings.MEDIA_URL.startswith('/'):
         media_url = settings.MEDIA_URL[1:]
-        urlpatterns += patterns('',
-                                (r'^%s(?P<path>.*)$' % media_url, serve,
-                                 {'document_root': settings.MEDIA_ROOT}))
+        urlpatterns += patterns(
+            '',
+            (r'^%s(?P<path>.*)$' % media_url,
+            user_passes_test(media_access)(serve),
+            {'document_root': settings.MEDIA_ROOT})
+        )
