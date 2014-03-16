@@ -1,4 +1,4 @@
-django==1.4
+django==1.4.5
 django-pagination
 django_evolution
 django-tagging
