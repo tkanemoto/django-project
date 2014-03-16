@@ -2,3 +2,5 @@
 .project
 .pydevproject
 *.db
+static
+settings_*.py
