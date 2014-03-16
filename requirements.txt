@@ -5,7 +5,7 @@ django-tagging
 python-dateutil
 transmissionrpc
 -e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
-django-registration
+django-registration==0.8
 markdown
 beautifulsoup
 django-treemenus
