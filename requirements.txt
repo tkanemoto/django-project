@@ -4,7 +4,7 @@ django_evolution
 django-tagging
 python-dateutil
 transmissionrpc
--e git://github.com/7k/django-basic-apps#egg=django-basic-apps
+-e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
 django-registration
 markdown
 beautifulsoup
