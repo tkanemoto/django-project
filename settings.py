@@ -5,9 +5,7 @@ import sys
 from os.path import abspath, dirname, join
 PROJECT_ROOT = dirname(abspath(__file__))
 SITE_ROOT = dirname(PROJECT_ROOT)
-
-sys.path.append(PROJECT_ROOT)
-sys.path.append(SITE_ROOT)
+sys.path.append(join(SITE_ROOT, 'apps'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -54,7 +52,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = join(PROJECT_ROOT, 'media') + os.sep
+MEDIA_ROOT = join(SITE_ROOT, 'media') + os.sep
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -65,7 +63,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = join(PROJECT_ROOT, 'static') + os.sep
+STATIC_ROOT = join(SITE_ROOT, 'static') + os.sep
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -115,7 +113,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    join(PROJECT_ROOT, 'templates')
+    join(PROJECT_ROOT, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = [
