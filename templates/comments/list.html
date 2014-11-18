@@ -8,7 +8,7 @@
     <div class="comment">
       <p class="comment-remove right">
         {% if comment.user == user or request.user.is_superuser %}
-        <a class="remove" href="{% url comments-delete comment.id %}">Remove</a>
+        <a class="remove" href="{% url 'comments-delete' comment.id %}">Remove</a>
         {% endif %}
       </p>
       <h5 class="name">
@@ -16,7 +16,7 @@
            href="{{ comment.get_absolute_url }}"
            title="Permalink to {{ comment.user.get_full_name }}'s comment"
            class="count avatar"
-           style="background-image: url({% gravatar_for_email comment.user.email 48 %})">{{ forloop.counter }}</a>
+           style="background-image: url({% gravatar_url comment.user.email 48 %})">{{ forloop.counter }}</a>
         <a href="{{ comment.user.get_absolute_url }}" title="View {{ comment.user.get_full_name }}'s profile">
           {{ comment.user.get_full_name }} <small>{{ comment.user.get_absolute_url }}</small>
         </a>

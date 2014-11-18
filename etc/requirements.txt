@@ -1,16 +1,18 @@
-django==1.4.5
-django-pagination
+beautifulsoup
+django==1.7.1
+-e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
+django-contrib-comments
 django_evolution
+django-filebrowser==3.5.7
+django-grappelli==2.6.3
+django-gravatar2
+django-localflavor
+django-openid-auth
+django-pagination
+django-registration==0.8
 django-tagging
+django-treemenus
+markdown2
+pyflakes
 python-dateutil
 transmissionrpc
--e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
-django-registration==0.8
-markdown
-beautifulsoup
-django-treemenus
-django-gravatar
-python-openid
-django-openid-auth
-django-filebrowser
-pyflakes

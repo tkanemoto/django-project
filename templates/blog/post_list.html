@@ -17,7 +17,7 @@
     {% for post in object_list %}
     <div class="item user small">
       <a href="{{ post.author.get_absolute_url }}">
-        <span class="avatar" style="background-image: url({% gravatar_for_email post.author.email 36 %})"></span>
+        <span class="avatar" style="background-image: url({% gravatar_url post.author.email 36 %})"></span>
       </a>
       <h4 class="title" style="margin-bottom: 4px"><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h4>
       <div class="date muted">

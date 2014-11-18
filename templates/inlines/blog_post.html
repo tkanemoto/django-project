@@ -6,7 +6,7 @@
     <h4><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h4>
     <small class="muted user xxsmall">
       <a href="{{ post.author.get_absolute_url }}">
-        <i class="avatar" style="background-image: url({% gravatar_for_email post.author.email 16 %})"></i>
+        <i class="avatar" style="background-image: url({% gravatar_url post.author.email 16 %})"></i>
       </a>
       {{ post.publish|date:"d F Y" }}
     </small>

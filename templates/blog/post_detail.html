@@ -28,7 +28,7 @@
     <a href="{{ object.author.get_absolute_url }}"
        title="View {{ object.author.get_full_name }}'s profile"
        class="avatar"
-       style="background-image: url({% gravatar_for_email object.author.email 48 %})">{{ forloop.counter }}</a>
+       style="background-image: url({% gravatar_url object.author.email 48 %})">{{ forloop.counter }}</a>
     By
     <a href="{{ object.author.get_absolute_url }}"
        title="View {{ object.author.get_full_name }}'s profile">
@@ -56,7 +56,7 @@
       {% render_comment_form for object %}
     {% else %}
       <div class="well">
-        <a href="{% url openid-login %}?next={{ request.path_info }}"><img src="{% url openid-logo %}"/> Log in using OpenID</a> to comment.
+        <a href="/auth/login?next={{ request.path_info }}"><img src=""/> Log in using OpenID</a> to comment.
       </div>
     {% endif %}
   {% else %}
