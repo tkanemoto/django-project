@@ -1,0 +1,71 @@
+{% extends "skeleton.html" %}
+
+{% load tree_menu_tags gravatar pagination_tags %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <script src="{{ STATIC_URL }}base/js/jquery.js" type="text/javascript"></script>
+  <script src="{{ STATIC_URL }}base/js/jquery.ba-hashchange.min.js" type="text/javascript"></script>
+  <script src="{{ STATIC_URL }}base/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="{{ STATIC_URL }}base/js/bootstrap.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="{{ STATIC_URL }}base/bootstrap/css/bootstrap.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="{{ STATIC_URL }}base/bootstrap/css/bootstrap-responsive.min.css" type="text/css" media="screen"/>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,300italic' type='text/css'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700' type='text/css'>
+  <link rel="stylesheet" href="{{ STATIC_URL }}base/css/icons.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="{{ STATIC_URL }}base/css/screen.css" type="text/css" media="screen"/>
+{% endblock %}
+
+{% block body %}
+  <div id="page">
+    <div id="top-bar" class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav user xxsmall pull-right">
+            <li class="dropdown">
+            {% if request.user.is_authenticated %}
+              <a class="dropdown-toggle name" data-toggle="dropdown" href="{{ request.user.get_profile.get_absolute_url }}">
+                <span class="avatar" style="background-image: url({% gravatar_url request.user.email 16 %})"></span>
+                {% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><a class href="{{ request.user.get_profile.get_absolute_url }}"><i class="icon-user"></i> Profile</a></li>
+                <li><a class href="{% url 'profile_edit' %}"><i class="icon-pencil"></i> Edit profile</a></li>
+                <li><a class href="{% url 'social:disconnect' backend='google-oauth2' %}?next=/"><i class="icon-off"></i> Log out</a></li>
+              </ul>
+            {% else %}
+              <a class="name" href="{% url 'social:begin' backend='google-oauth2' %}?next={{ request.path_info }}">
+                <span class="avatar" style="background-image: url({% gravatar_url '' 16 %})"></span>
+                Log in
+              </a>
+            {% endif %}
+            </li>
+          </ul>
+          <a class="brand" href="/">Home</a>
+          {% block navigation %}{% show_menu "navigation" %}{% endblock %}
+        </div>
+      </div>
+    </div>
+    <div class="{% block container_class %}container{% endblock %}">
+      <div class="content {% block container_row_class %}row{% endblock %}">
+        <div id="sidebar" class="{% block sidebar_class %}{% endblock %}">
+          <div class="affix">{% block sidebar %}{% endblock %}</div>
+        </div>
+        <div class="{% block content_class %}span12{% endblock %}">
+          <div id="header" class="clearfix">
+            {% block content_title %}{% endblock %}
+          </div>
+          <div id="content">
+            {% block content %}{% endblock %}
+            {% if is_paginated %}{% paginate %}{% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer" class="container">{% block footer %}{% endblock %}</div>
+  </div>
+{% endblock %}
