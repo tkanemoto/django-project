@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     url(r'^torrent/', include('torrent.urls')),
     url(r'^', include('base.urls')),
     # Login
-    url(r'^openid/', include('django_openid_auth.urls')),
+    url('^social/', include('social.apps.django_app.urls', namespace='social')),
     url(r'^auth/', include('django.contrib.auth.urls')),
     url(r'^grappelli/', include('grappelli.urls')),
 )

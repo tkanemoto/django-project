@@ -13,6 +13,9 @@ django-registration==0.8
 django-tagging
 django-treemenus
 markdown2
+oauthlib>=0.7.2
 pyflakes
 python-dateutil
+requests>=2.4.3
+requests-oauthlib
 transmissionrpc
