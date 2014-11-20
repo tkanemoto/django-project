@@ -1,4 +1,4 @@
-beautifulsoup
+beautifulsoup4>=4.2.1
 django==1.7.1
 -e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
 django-contrib-comments

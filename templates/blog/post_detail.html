@@ -22,21 +22,15 @@
 
 {% block content %}
   {% load blog comments tagging_tags inlines markup gravatar %}
-
-  <h5 class="author">
-    {% if object.author %}
-    <a href="{{ object.author.get_absolute_url }}"
-       title="View {{ object.author.get_full_name }}'s profile"
-       class="avatar"
-       style="background-image: url({% gravatar_url object.author.email 48 %})">{{ forloop.counter }}</a>
-    By
-    <a href="{{ object.author.get_absolute_url }}"
-       title="View {{ object.author.get_full_name }}'s profile">
-      {{ object.author.get_full_name }}
+  <div class="media">
+    <a class="media-left" href="{{ object.author.get_absolute_url }}">
+      <img src="{% gravatar_url object.author.email 48 %}" class="img-rounded"/>
     </a>
-    <p class="date">On {{ object.publish|date:"j F Y" }}</p>
-    {% endif %}
-  </h5>
+    <div class="media-body">
+      <h4 class="media-heading"><a href="{{ object.author.get_absolute_url }}" title="View {{ object.author.get_full_name }}'s profile">{{ object.author.get_full_name }}</a></h4>
+      <p class="date text-muted">On {{ object.publish|date:"j F Y" }}</p>
+    </div>
+  </div>
 
   <div class="body">
     {{ object.body|safe|render_inlines|markdown }}
@@ -56,7 +50,7 @@
       {% render_comment_form for object %}
     {% else %}
       <div class="well">
-        <a href="/auth/login?next={{ request.path_info }}"><img src=""/> Log in using OpenID</a> to comment.
+        <a href="{% url 'social:begin' backend='google-oauth2' %}?next={{ request.path_info }}"><img src=""/> Log in using Google+</a> to comment.
       </div>
     {% endif %}
   {% else %}

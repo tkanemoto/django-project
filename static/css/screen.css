@@ -1,0 +1,46 @@
+body,p,ul,ol,dl,input,textarea,table,td { font-family: 'Open Sans', sans-serif; color: #666; font-size: 14px/19px; }
+code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 13px; }
+.loading { background: transparent url('../images/loading.gif') 20px 50% no-repeat no-repeat; padding-left: 80px; vertical-align: middle; line-height: 100px; height: 100px; }
+.loading-small { background: url(../images/icons/loading.gif) left center no-repeat; padding-left: 20px; }
+
+/* FLOATING */
+.left { float: left!important; }
+.right { float: right!important; }
+.clear { clear: both; }
+.separator { color: #ccc; padding: 0px 6px; }
+
+.content { margin-top: 50px; }
+
+/* BOOTSTRAP OVERRIDES */
+.popover { max-width: 400px; }
+
+#top-bar .navbar-right .dropdown .dropdown-menu { width: 400px; top: 50px; }
+#top-bar .navbar-right .dropdown .dropdown-menu .arrow { right: 10px; left: auto; }
+#top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links { margin: 6px 0; }
+#top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a { margin: 10px; }
+#top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a:first-child { margin-left: 0px; }
+#top-bar .navbar-right .dropdown .avatar { margin: -2px 4px; }
+
+/* USERS */
+.user { position: relative; margin: 0 0 0 44px; }
+.user.xsmall { margin-left: 27px; }
+.user.xxsmall { margin-left: 24px; }
+.user .name { padding-left: 4px; }
+.user .name small, .user span.date { color: #999; font-size: .85em; }
+.user span.date { display: block; margin-left: 50px; }
+.author { position: relative; margin: 20px 0 20px 60px; }
+.avatar { position: absolute; top: 0px; left: -60px; display: block; width: 48px; height: 48px; background: #bbb; background-position: 50% 50%; background-repeat: no-repeat; overflow: hidden; text-indent: -1000px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+.small .avatar { left: -44px; width: 36px; height: 36px; }
+.xsmall .avatar { left: -27px; width: 24px; height: 24px; }
+.xxsmall .avatar { position: absolute; left: -24px; width: 16px; height: 16px; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; }
+.object_list .meta .xxsmall .avatar { top: 0px; }
+.avatar:hover, .small .avatar:hover { background: #3d7cb1; text-decoration: none; }
+#top-bar .user { margin-left: 20px; line-height: 40px; font-size: .7em; vertical-align: middle; }
+#top-bar .user.xxsmall .avatar { top: 12px; left: -16px; }
+#top-bar .user .name { text-decoration: none; }
+
+#user_image { margin: 10px; width: 210px; height: 210px; display: block; backgro
+und: #eee; background-position: 50% 50%; background-repeat: no-repeat; overflow:
+ hidden; text-indent: -1000px; -webkit-border-radius: 4px; -moz-border-radius: 4
+px; border-radius: 4px; }
+

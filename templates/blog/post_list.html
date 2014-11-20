@@ -13,18 +13,20 @@
 
 {% block content %}
   {% load gravatar %}
-  <div class="list post_list">
+  <ul class="media-list">
     {% for post in object_list %}
-    <div class="item user small">
-      <a href="{{ post.author.get_absolute_url }}">
-        <span class="avatar" style="background-image: url({% gravatar_url post.author.email 36 %})"></span>
-      </a>
-      <h4 class="title" style="margin-bottom: 4px"><a href="{{ post.get_absolute_url }}" title="View this post">{{ post.title }}</a></h4>
-      <div class="date muted">
-        {{ post.publish|date:"d F Y" }} <small>({{ post.publish|timesince }} ago)</small>
-      </div>
-      <p class="tease">{{ post.tease|safe }}</p>
-    </div>
+      <li class="media">
+        <a class="media-left" href="{{ post.author.get_absolute_url }}">
+          <img src="{% gravatar_url post.author.email 36 %}" class="img-rounded">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+          <div class="date text-muted">
+            {{ post.publish|date:"d F Y" }} <small>({{ post.publish|timesince }} ago)</small>
+          </div>
+          <p class="tease">{{ post.tease|safe }}</p>
+        </div>
+      </li>
     {% endfor %}
-  </div>
+  </ul>
 {% endblock %}
