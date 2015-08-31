@@ -2,7 +2,6 @@ beautifulsoup4>=4.2.1
 django==1.7.1
 -e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
 django-contrib-comments
-django_evolution
 django-filebrowser==3.5.7
 django-grappelli==2.6.3
 django-gravatar2
