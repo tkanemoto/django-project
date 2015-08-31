@@ -1,11 +1,11 @@
-"""
-Django settings for project project.
+""" Django settings for the `project` project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
+
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -91,11 +91,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media') + os.sep
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static') + os.sep
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(PROJECT_ROOT, 'templates'),
+    os.path.join(BASE_DIR, 'templates'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
