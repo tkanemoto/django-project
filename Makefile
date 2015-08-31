@@ -40,6 +40,13 @@ kwalitee: install
         --exclude=project,static,migrations ."
 	@echo "$(SUCCESS_COLOR)* No kwalitee errors, Congratulations ! :)$(NO_COLOR)"
 
+prepare-db: install
+	@echo "$(COLOR)* Prepare the database$(NO_COLOR)"
+	@bash -c "\
+      source $(VIRTUALENV_DIR)/bin/activate && \
+        $(LOCAL_PATH)/manage.py syncdb --traceback && \
+        $(LOCAL_PATH)/manage.py migrate --traceback"
+
 clean:
 	@echo "$(COLOR)* Removing useless files$(NO_COLOR)"
 	@find . -type f \( -name "*.pyc" -o -name "*~" \) -exec rm -f {} \;
