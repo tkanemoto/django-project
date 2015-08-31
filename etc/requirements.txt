@@ -13,6 +13,7 @@ django-tagging
 django-treemenus
 markdown2
 oauthlib>=0.7.2
+Pillow
 pyflakes
 python-dateutil
 requests>=2.4.3
