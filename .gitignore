@@ -2,4 +2,5 @@
 .project
 .pydevproject
 *.db
-settings_*.py
+project/settings_*.py
+apps/
