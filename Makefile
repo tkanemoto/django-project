@@ -9,7 +9,7 @@ SUCCESS_COLOR   = \033[35;01m
 TEST_VERBOSITY ?= 1
 
 ifeq ($(VIRTUALENV_DIR),)
-  VIRTUALENV_DIR := .virtualenv
+  VIRTUALENV_DIR := ../.virtualenv
 endif
 
 LOCAL_PATH := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
