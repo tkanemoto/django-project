@@ -10,8 +10,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(PROJECT_ROOT)  # the base for code, where `apps` and `project` are
+SITE_ROOT = os.path.dirname(BASE_DIR)  # where the `site` folder lives
 PROJECT_NAME = os.path.basename(PROJECT_ROOT)
 import sys
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
@@ -62,7 +63,7 @@ WSGI_APPLICATION = '{0}.wsgi.application'.format(PROJECT_NAME)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SITE_ROOT, 'db.sqlite3'),
     }
 }
 
@@ -87,9 +88,9 @@ STATIC_URL = '/static/'
 
 
 SITE_ID = 1
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') + os.sep
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'media') + os.sep
 MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') + os.sep
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static') + os.sep
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
