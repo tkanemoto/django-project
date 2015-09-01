@@ -16,6 +16,7 @@ oauthlib>=0.7.2
 Pillow
 pyflakes
 python-dateutil
+python-social-auth
 requests>=2.4.3
 requests-oauthlib
 transmissionrpc
