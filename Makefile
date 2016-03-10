@@ -57,10 +57,8 @@ install: $(VIRTUALENV_DIR)/.freeze.list
 
 $(VIRTUALENV_DIR)/.freeze.list: $(VIRTUALENV_DIR) \
                                 $(LOCAL_PATH)/etc/requirements.txt \
-                                $(LOCAL_PATH)/etc/apt-get.list \
                                 $(LOCAL_PATH)/Makefile
 	@echo "$(COLOR)* Installing pre-requisites$(NO_COLOR)"
-	sudo apt-get install -y $(shell cat $(LOCAL_PATH)/etc/apt-get.list)
 	@bash -c "\
       export PIP_DOWNLOAD_CACHE=$$HOME/.pip-download-cache && \
       source $(VIRTUALENV_DIR)/bin/activate && \
@@ -73,6 +71,5 @@ $(VIRTUALENV_DIR)/.freeze.list: $(VIRTUALENV_DIR) \
 $(VIRTUALENV_DIR):
 	@echo "$(COLOR)* Setting up the virtualenv$(NO_COLOR)"
 	@bash -c "\
-      sudo apt-get install -y python-pip && \
       sudo pip install virtualenv --upgrade && \
       virtualenv --system-site-packages $@"
