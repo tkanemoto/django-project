@@ -1,5 +1,5 @@
-body,p,ul,ol,dl,input,textarea,table,td { font-family: 'Open Sans', sans-serif; color: #666; font-size: 14px/19px; }
-code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 13px; }
+body,p,ul,ol,dl,input,textarea,table,td { font-family: 'Open Sans', sans-serif; color: #666; font-size: 16px/24px; }
+code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 14px; }
 .loading { background: transparent url('../images/loading.gif') 20px 50% no-repeat no-repeat; padding-left: 80px; vertical-align: middle; line-height: 100px; height: 100px; }
 .loading-small { background: url(../images/icons/loading.gif) left center no-repeat; padding-left: 20px; }
 
@@ -16,6 +16,7 @@ code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 13px; }
 #top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a { margin: 10px; }
 #top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a:first-child { margin-left: 0px; }
 #top-bar .navbar-right .dropdown .avatar { margin: -2px 4px; }
+#navigation > li > a { font-weight: 700; }
 
 /* USERS */
 .user { position: relative; margin: 0 0 0 44px; }
