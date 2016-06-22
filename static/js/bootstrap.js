@@ -17,6 +17,7 @@ $(function() {
     $('.tooltip').tooltip();
     $('.popover').popover();
     $("*[rel=popover]").popover();
+    $('.ui-field .field textarea, .ui-field .field input[type=text], .ui-field .field input[type=email], .ui-field .field input[type=url]').addClass('form-control');
     $('.dropdown-menu.prevent-dismissal').on('click', function(event){
       if (event.target.tagName != 'A') {
         event.stopPropagation();
