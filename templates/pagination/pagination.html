@@ -1,6 +1,6 @@
 {% if is_paginated %}
 <nav>
-  <ul class="pagination">
+  <ul class="pagination pagination-lg">
     {% if page_obj.has_previous %}
       <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo; Previous</a></li>
     {% else %}
@@ -14,9 +14,9 @@
       {% endif %}
     {% endfor %}
     {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">NEXT &rsaquo;</a></li>
+      <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">Next &rsaquo;</a></li>
     {% else %}
-      <li class="disabled"><span class="next">NEXT &rsaquo;</span></li>
+      <li class="disabled"><span class="next">Next &rsaquo;</span></li>
     {% endif %}
   </ul>
   <p>Displaying {{ page_obj.start_index }} to {{ page_obj.end_index }}  of {{ paginator.count }}</p>
