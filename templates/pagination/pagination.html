@@ -1,10 +1,10 @@
 {% if is_paginated %}
-<div class="pagination">
-  <ul>
+<nav>
+  <ul class="pagination">
     {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo; PREVIOUS</a></li>
+      <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo; Previous</a></li>
     {% else %}
-      <li class="disabled"><span class="prev">&lsaquo; PREVIOUS</span></li>
+      <li class="disabled"><span class="prev">&lsaquo; Previous</span></li>
     {% endif %}
     {% for page in pages %}
       {% if page %}
@@ -20,5 +20,5 @@
     {% endif %}
   </ul>
   <p>Displaying {{ page_obj.start_index }} to {{ page_obj.end_index }}  of {{ paginator.count }}</p>
-</div>
+</nav>
 {% endif %}
