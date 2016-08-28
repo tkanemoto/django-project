@@ -5,7 +5,8 @@
 {% block title %}{{ object.title }}{% endblock %}
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
-
+{% block meta_description %}{{ object.tease|escape }}{% endblock %}
+{% block meta_author %}{{ object.author.get_full_name }}{% endblock %}
 
 {% block content_title %}
   <h2>{{ object.title }}</h2>
