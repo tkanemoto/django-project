@@ -1,6 +1,7 @@
 {% extends "skeleton.html" %}
 
-{% load tree_menu_tags gravatar pagination_tags %}
+{% load tree_menu_tags gravatar pagination_tags tagging_tags %}
+{% tags_for_model 'blog.post' as tags %}
 
 {% block extrahead %}
   {{ block.super }}
@@ -11,6 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="author" content="{% block meta_author %}{% endblock %}">
+  <meta name="keywords" content="{{ tags.values }}">
 
   <title>{% block title %}{% endblock %}</title>
 
