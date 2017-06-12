@@ -1,4 +1,4 @@
-body,p,ul,ol,dl,input,textarea,table,td { font-family: 'Open Sans', sans-serif; color: #666; font-size: 16px; line-height: 32px; }
+body,p,ul,ol,dl,input,textarea,table,td { font-family: 'Open Sans', sans-serif; color: #666; font-size: 16px; font-weight: 300; line-height: 32px; }
 code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 14px; }
 .loading { background: transparent url('../images/loading.gif') 20px 50% no-repeat no-repeat; padding-left: 80px; vertical-align: middle; line-height: 100px; height: 100px; }
 .loading-small { background: url(../images/icons/loading.gif) left center no-repeat; padding-left: 20px; }
@@ -10,6 +10,7 @@ code, pre { font-family: 'Ubuntu Mono', Consolas, monospace; font-size: 14px; }
 /* BOOTSTRAP OVERRIDES */
 .popover { max-width: 400px; }
 
+#top-bar { border: none; background-color: #fff; }
 #top-bar .navbar-right .dropdown .dropdown-menu { width: 400px; top: 50px; }
 #top-bar .navbar-right .dropdown .dropdown-menu .arrow { right: 10px; left: auto; }
 #top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links { margin: 6px 0; }
