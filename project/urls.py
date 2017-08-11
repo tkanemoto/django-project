@@ -1,11 +1,24 @@
-from django.conf.urls import patterns, include, url
+"""project URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.11/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url, include
 from django.contrib import admin
 
-from filebrowser.sites import site as filebrowser_site
-
-urlpatterns = patterns('',
-    url(r'^admin/filebrowser/', include(filebrowser_site.urls)),
-    url(r'^admin/', include(admin.site.urls)),
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^', include('portfolios.urls')),
 
     # Basic Apps
     url(r'^blog/', include('basic.blog.urls')),
@@ -33,24 +46,4 @@ urlpatterns = patterns('',
     # Login
     url('^social/', include('social.apps.django_app.urls', namespace='social')),
     url(r'^auth/', include('django.contrib.auth.urls')),
-    url(r'^grappelli/', include('grappelli.urls')),
-)
-
-from django.conf import settings
-
-from django.contrib.auth.decorators import login_required, user_passes_test
-def media_access(user):
-    return user.is_staff or \
-        user.groups.filter(name__in=['media-access', 'admins']).exists()
-
-#if settings.DEBUG:
-if True:
-    from django.views.static import serve
-    if settings.MEDIA_URL.startswith('/'):
-        media_url = settings.MEDIA_URL[1:]
-        urlpatterns += patterns(
-            '',
-            (r'^%s(?P<path>.*)$' % media_url,
-            user_passes_test(media_access)(serve),
-            {'document_root': settings.MEDIA_ROOT})
-        )
+]

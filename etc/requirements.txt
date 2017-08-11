@@ -1,19 +1,21 @@
+django>=1.11
+django-storages
+django-ordered-model
+six
+Pillow
+boto3
 beautifulsoup4>=4.2.1
-django==1.7.1
 -e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
 django-contrib-comments
-django-filebrowser==3.5.7
-django-grappelli==2.6.3
 django-gravatar2
 django-localflavor
 django-openid-auth
 django-pagination
-django-registration==0.8
+django-registration
 django-tagging
-django-treemenus
+-e git+https://github.com/yoza/django-treemenus#egg=django-treemenus
 markdown2
 oauthlib>=0.7.2
-Pillow
 pyflakes
 python-dateutil
 python-social-auth

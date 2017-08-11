@@ -2,5 +2,7 @@
 .project
 .pydevproject
 *.db
-project/settings_*.py
 apps/
+apps/.env/
+*.py-e
+db.sqlite3
