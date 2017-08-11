@@ -104,6 +104,7 @@ class Testimonial(OrderedModel):
     title = models.CharField('title', max_length=200)
     body = models.TextField('body', blank=True)
     page = models.ForeignKey('Page', null=True)
+    order_with_respect_to = 'page'
 
     def __unicode__(self):
         return '{} : {} "{}"'.format(self.author, self.title, self.body)
