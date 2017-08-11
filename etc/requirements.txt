@@ -18,7 +18,7 @@ markdown2
 oauthlib>=0.7.2
 pyflakes
 python-dateutil
-python-social-auth
+python-social-auth==0.2.21
 requests>=2.4.3
 requests-oauthlib
 social-auth-app-django
