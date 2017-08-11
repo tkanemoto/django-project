@@ -281,7 +281,7 @@
                             <hr class="colored">
                             <p>{{ testimonial.body }}</p>
                             <div class="testimonial-img">
-                                <img class="rounded-circle img-fluid" src="{{ testimonial.author.mugshot.url }}" alt="">
+                                <img class="rounded-circle img-fluid" src="{% if testimonial.author.mugshot %}{{ testimonial.author.mugshot.url }}{% else %}https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y&d=mm{% endif %}" alt="">
                             </div>
                             <div class="testimonial-author">
                                 <span class="name">{{ testimonial.author.name }}</span>
