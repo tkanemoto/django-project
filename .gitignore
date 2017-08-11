@@ -1,2 +1,5 @@
 *.pyc
 .env/
+project/settings_local.py
+*.py-e
+db.sqlite3

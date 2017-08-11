@@ -1,0 +1,6 @@
+django>=1.11
+django-storages
+django-ordered-model
+six
+Pillow
+boto3
