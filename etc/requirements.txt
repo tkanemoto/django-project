@@ -13,7 +13,7 @@ django-openid-auth
 django-pagination
 django-registration
 django-tagging
--e git+https://github.com/yoza/django-treemenus#egg=django-treemenus
+-e git+https://github.com/tkanemoto/django-treemenus#egg=django-treemenus
 markdown2
 oauthlib>=0.7.2
 pyflakes
