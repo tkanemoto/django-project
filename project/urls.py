@@ -46,5 +46,5 @@ urlpatterns = [
     url('^social/', include('social_django.urls', namespace='social')),
     url(r'^auth/', include('django.contrib.auth.urls')),
     # Portfolios
-    url(r'^', include('portfolios.urls')),
+    url(r'^portfolios/', include('portfolios.urls')),
 ]
