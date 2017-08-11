@@ -64,7 +64,7 @@ $(VIRTUALENV_DIR)/.freeze.list: $(VIRTUALENV_DIR) \
       pip install pip --upgrade && \
       pip install setuptools --upgrade && \
       pip install pbr --upgrade && \
-      pip install -r $(LOCAL_PATH)/etc/requirements.txt && \
+      pip install --upgrade -r $(LOCAL_PATH)/etc/requirements.txt && \
       pip freeze > $@"
 
 $(VIRTUALENV_DIR):
