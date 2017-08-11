@@ -182,7 +182,7 @@
                             <div class="project-list">
                                 {% for project in client.project_set.all %}
                                 <div class="project-item">
-                                    <div class="date-label"><i class="fa fa-film"></i><div class="year">{{ project.year }}</div></div>
+                                    <div class="date-label"><i class="fa fa-film"></i><div class="year">{{ project.date }}</div></div>
                                     <h3 class="title">{{ project.name }}</h3>
                                     <ul class="meta-list list-inline">
                                         <li class="list-inline-item"><i class="fa fa-tags"></i> {{ project.category }}</li>
@@ -243,11 +243,11 @@
                                     <div class="project-list">
                                         {% for project in client.project_set.all %}
                                         <div class="project-item">
-                                            <div class="date-label"><i class="fa fa-film"></i><div class="year">{{ project.year }}</div></div>
+                                            <div class="date-label"><i class="fa fa-film"></i><div class="year">{{ project.date }}</div></div>
                                             <h3 class="title">{{ project.name }}</h3>
                                             <ul class="meta-list list-inline">
                                                 <li class="list-inline-item"><i class="fa fa-tags"></i> {{ project.category }}</li>
-                                                <li class="list-inline-item time"><i class="fa fa-user"></i> {{ project.roles.all | join:' / ' }}</li>
+                                                <li class="list-inline-item"><i class="fa fa-user"></i> {{ project.roles.all | join:' / ' }}</li>
                                             </ul>
                                             {% if project.url %}
                                             <div class="actions">

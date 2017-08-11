@@ -396,8 +396,8 @@ header.video {
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: .5;
-      background-color: #222; }
+      opacity: .7;
+      background-color: #000; }
     .portfolio-carousel .container-fluid {
       z-index: 1000; }
     .portfolio-carousel .item .project-details .project-name {
@@ -881,10 +881,10 @@ a.text-primary {
   font-weight: 700;
 }
 .project-details .project-list .meta-list {
-  color: #c1b1a8;
+  color: #ffe1d8;
 }
 .project-details .project-list .meta-list a {
-  color: #c1b1a8;
+  color: #ffe1d8;
 }
 .project-details .project-list .meta-list .fa {
   margin-right: 5px;
