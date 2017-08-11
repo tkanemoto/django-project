@@ -18,7 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('portfolios.urls')),
 
     # Basic Apps
     url(r'^blog/', include('basic.blog.urls')),
@@ -46,4 +45,6 @@ urlpatterns = [
     # Login
     url('^social/', include('social_django.urls', namespace='social')),
     url(r'^auth/', include('django.contrib.auth.urls')),
+    # Portfolios
+    url(r'^', include('portfolios.urls')),
 ]
