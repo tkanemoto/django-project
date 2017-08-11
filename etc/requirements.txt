@@ -21,4 +21,5 @@ python-dateutil
 python-social-auth
 requests>=2.4.3
 requests-oauthlib
+social-auth-app-django
 transmissionrpc
