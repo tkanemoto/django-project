@@ -45,6 +45,7 @@ prepare-db: install
 	@bash -c "\
       source $(VIRTUALENV_DIR)/bin/activate && \
         $(LOCAL_PATH)/manage.py migrate --fake-initial treemenus --noinput --traceback && \
+        $(LOCAL_PATH)/manage.py migrate --noinput --traceback && \
         $(LOCAL_PATH)/manage.py collectstatic --noinput --traceback"
 
 clean:
