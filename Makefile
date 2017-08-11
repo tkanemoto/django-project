@@ -44,7 +44,6 @@ prepare-db: install
 	@echo "$(COLOR)* Prepare the database$(NO_COLOR)"
 	@bash -c "\
       source $(VIRTUALENV_DIR)/bin/activate && \
-        $(LOCAL_PATH)/manage.py syncdb --noinput --traceback && \
         $(LOCAL_PATH)/manage.py migrate --noinput --traceback && \
         $(LOCAL_PATH)/manage.py collectstatic --noinput --traceback"
 
