@@ -24,6 +24,9 @@ class Page(models.Model):
     clients = models.ManyToManyField('Client', blank=True, help_text='Select the clients you would like to be listed in the Credits section')
     number_of_featured_clients = models.IntegerField('number of featured clients', default=5, help_text='The number of clients to show in the big carousel')
     footer_background = models.ImageField(blank=True, null=True, upload_to=UPLOAD_FOLDER)
+    email = models.EmailField(null=True, blank=True, help_text='The email address people should contact you about this page')
+    phone = models.CharField(null=True, blank=True, max_length=20, help_text='The contact phone number')
+    address = models.TextField(null=True, blank=True, max_length=300, help_text='Postal address')
 
     def __unicode__(self):
         return '{} {}'.format(self.title, self.description if self.description is not None else '')
@@ -64,6 +67,7 @@ class Client(OrderedModel):
     mugshot = models.ImageField(null=True, blank=True, upload_to=UPLOAD_FOLDER, help_text='Profile picture')
     showreel_url = models.URLField('showreel URL', blank=True, null=True, help_text='The embedded video URL that best represent the work you\'ve done for this client')
     link = models.URLField(null=True, blank=True, help_text='Link to this client\'s website.')
+    owner = models.ForeignKey('auth.User', blank=True)
 
     class Meta:
         ordering = ('order',)
@@ -92,7 +96,7 @@ class Project(OrderedModel):
     roles = models.ManyToManyField('Role')
     category = models.CharField('category', max_length=30)
     date = models.CharField('date', max_length=20)
-    url = models.URLField(blank=True, null=True, help_text='URL of the embedded video content')
+    url = models.URLField('URL', blank=True, null=True, help_text='URL of the embedded video content')
     order_with_respect_to = 'client'
 
     def __unicode__(self):
@@ -108,3 +112,19 @@ class Testimonial(OrderedModel):
 
     def __unicode__(self):
         return '{} : {} "{}"'.format(self.author, self.title, self.body)
+
+
+class SocialMediaLink(OrderedModel):
+    SERVICES = (
+        ('facebook', 'Facebook'),
+        ('linkedin', 'LinkedIn'),
+        ('twitter', 'Twitter'),
+        ('soundcloud', 'SoundCloud'),
+        ('spotify', 'Spotify'),
+        ('youtube', 'YouTube'),
+        ('github', 'GitHub'),
+    )
+    kind = models.CharField('kind', max_length=20, choices=SERVICES)
+    url = models.URLField('URL')
+    page = models.ForeignKey('Page')
+    order_with_respect_to = 'page'

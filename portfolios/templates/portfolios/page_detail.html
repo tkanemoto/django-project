@@ -308,40 +308,40 @@
             <div class="text-center">
                 <h2>Contact</h2>
                 <hr class="colored">
-                <p>Please tell us about your next project and we will let you know what we can do to help you.</p>
             </div>
             <div class="row">
+                {% if object.phone %}
                 <div class="col-md-4 footer-contact-details">
                     <h4><i class="fa fa-phone"></i> Call</h4>
-                    <p>+44 (0)1223 000000</p>
+                    <p>{{ object.phone }}</p>
                 </div>
+                {% endif %}
+                {% if object.address %}
                 <div class="col-md-4 footer-contact-details">
                     <h4><i class="fa fa-map-marker"></i> Visit</h4>
-                    <p>1234 Awesome Place
-                        <br>Cambridge, CB1 1AA</p>
+                    <p>{{ object.address | linebreaksbr }}</p>
                 </div>
+                {% endif %}
+                {% if object.email %}
                 <div class="col-md-4 footer-contact-details">
                     <h4><i class="fa fa-envelope"></i> Email</h4>
-                    <p><a href="mailto:mail@example.com">mail@example.com</a>
+                    <p><a href="mailto:{{ object.email }}">{{ object.email }}</a>
                     </p>
                 </div>
+                {% endif %}
             </div>
             <div class="row footer-social">
                 <div class="col-lg-12">
                     <ul class="list-inline">
+                        {% for link in object.socialmedialink_set.all %}
                         <li class="list-inline-item">
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                            <a href="{{ link.url }}" target="_blank"><i class="fa fa-{{ link.kind }} fa-fw fa-2x"></i></a>
                         </li>
-                        <li class="list-inline-item">
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#"><i class="fa fa-linkedin fa-fw fa-2x"></i></a>
-                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
-            <p class="copyright">&copy; 2017 psyClique Designs</p>
+            <p class="copyright">&copy; 2017 {{ object.owner.get_full_name }} - Designed by psyClique Desgins</p>
         </div>
     </footer>
 

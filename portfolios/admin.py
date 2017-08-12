@@ -40,19 +40,42 @@ class ClientAdmin(OrderedModelAdmin):
         qs = super(ClientAdmin, self).get_queryset(request)
         if request.user.is_superuser:
             return qs
-        return qs.filter(page__owner=request.user)
+        return qs.filter(owner=request.user)
+
+    def save_model(self, request, obj, form, change):
+        if form.data['owner'] is None or form.data['owner'] == '':
+            obj.owner = request.user
+        super(ClientAdmin, self).save_model(request, obj, form, change)
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj is None:
+            return []
+        if request.user.is_superuser:
+            return []
+        return ['owner']
 
 
 class TestimonialInline(OrderedTabularInline):
     model = Testimonial
     fields = ('author', 'title', 'body', 'order', 'move_up_down_links',)
     readonly_fields = ('order', 'move_up_down_links',)
+    extra = 1
+    ordering = ('order',)
+
+
+class SocialMediaLinkInline(OrderedTabularInline):
+    model = SocialMediaLink
+    fields = ('kind', 'url', 'order', 'move_up_down_links',)
+    readonly_fields = ('order', 'move_up_down_links',)
+    extra = 1
+    ordering = ('order',)
 
 
 class PageAdmin(admin.ModelAdmin):
     inlines = [
         EmbeddedContentInline,
-        TestimonialInline
+        TestimonialInline,
+        SocialMediaLinkInline,
     ]
     filter_horizontal = ('clients',)
 
@@ -75,6 +98,15 @@ class PageAdmin(admin.ModelAdmin):
         if request.user.is_superuser:
             return []
         return ['owner']
+
+    def get_field_queryset(self, db, db_field, request):
+        """ Only show clients belonging to the owner. """
+
+        if db_field.name == 'clients':
+            if not request.user.is_superuser:
+                return db_field.remote_field.model._default_manager.filter(owner=request.user)
+
+        return super(PageAdmin, self).get_field_queryset(db, db_field, request)
 
 
 #admin.site.register(Testimonial)

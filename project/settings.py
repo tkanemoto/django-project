@@ -54,3 +54,5 @@ COMMENTS_APP = 'basic.comments'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 SITE_ID = 1
+
+TEMPLATE_DEBUG = DEBUG
