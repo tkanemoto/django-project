@@ -62,7 +62,6 @@ class EmbeddedContent(OrderedModel):
 class Client(OrderedModel):
     name = models.CharField('name', max_length=100, help_text='Name of the client')
     description = models.CharField('description', max_length=200, help_text='Job title or the type of organisation')
-    content = models.TextField('content', null=True, blank=True, help_text='Embedded content (video or audio) that best represent your work done for this client')
     background = models.ImageField(null=True, blank=True, upload_to=UPLOAD_FOLDER, help_text='Background image to display in the carousel')
     mugshot = models.ImageField(null=True, blank=True, upload_to=UPLOAD_FOLDER, help_text='Profile picture')
     showreel_url = models.URLField('showreel URL', blank=True, null=True, help_text='The embedded video URL that best represent the work you\'ve done for this client')
