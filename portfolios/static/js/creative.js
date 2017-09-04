@@ -116,13 +116,15 @@ $(document).ready(function() {
     });
 
     // Vide - Video Background Settings
-    $('header.video').vide({
-        mp4: $('#show-reel-modal video > source').attr('src'),
-        //poster: "img/header.jpg"
-    }, {
-        posterType: 'none',
-        muted: true
-    });
+    var src = $('#show-reel-modal video > source').attr('src');
+    if (typeof src != "undefined") {
+        var opt = {};
+        opt[src.split('.').pop().toLowerCase()] = src;
+        $('header.video').vide(opt, {
+            posterType: 'none',
+            muted: true
+        });
+    }
 
     $('#show-reel-modal').on('show.bs.modal', function(){
         $('header.video').data('vide').getVideoObject().pause();

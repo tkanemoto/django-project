@@ -74,6 +74,7 @@
         </div>
     </nav>
 
+    {% if object.showreel %}
     <!-- Masthead -->
     <header class="masthead video">
         <div class="overlay"></div>
@@ -103,12 +104,19 @@
             </a>
         </div>
     </header>
+    {% endif %}
 
     <!-- About Section -->
     <section class="page-section" id="about">
         <div class="container">
             <div class="wow fadeIn text-center">
+                {% if object.showreel %}
                 <h1>About</h1>
+                {% else %}
+                <h1>{{ object.title }}</h1>
+                <hr class="colored">
+                <p>{{ object.subtitle }}</p>
+                {% endif %}
                 <div class="row mt-4">
                     <div class="col-md-4">
                         <img class="rounded-circle img-fluid img-profile" src="{{ object.mugshot.url }}" alt="">
@@ -121,7 +129,7 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
+    {% if object.quote %}
     <section class="call-to-action" {% if object.quote_background %}style="background-image: url('{{ object.quote_background.url }}');"{% endif %}>
         <div class="container wow fadeIn">
             <div class="row">
@@ -136,6 +144,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- Music Section -->
     <section class="page-section music" id="music">
@@ -310,12 +319,14 @@
                     <h4><i class="fa fa-phone"></i> Call</h4>
                     <p>{{ object.phone }}</p>
                 </div>
+                {% else %}<div class="col-md-2"></div>
                 {% endif %}
                 {% if object.address %}
                 <div class="col-md-4 footer-contact-details">
                     <h4><i class="fa fa-map-marker"></i> Visit</h4>
                     <p>{{ object.address | linebreaksbr }}</p>
                 </div>
+                {% else %}<div class="col-md-2"></div>
                 {% endif %}
                 {% if object.email %}
                 <div class="col-md-4 footer-contact-details">
@@ -323,6 +334,7 @@
                     <p><a href="mailto:{{ object.email }}">{{ object.email }}</a>
                     </p>
                 </div>
+                {% else %}<div class="col-md-2"></div>
                 {% endif %}
             </div>
             <div class="row footer-social">
@@ -340,6 +352,7 @@
         </div>
     </footer>
 
+    {% if object.showreel %}
     <div class="portfolio-modal modal fade" id="show-reel-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -366,6 +379,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
 
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>

@@ -56,3 +56,7 @@ AUTH_PROFILE_MODULE = 'profiles.Profile'
 SITE_ID = 1
 
 TEMPLATE_DEBUG = DEBUG
+
+if DEBUG:
+    MEDIA_ROOT = BASE_DIR
+    MEDIA_URL = '/media/'
