@@ -312,7 +312,7 @@ header.video {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background-color: #222;
+  background-color: #111;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -569,7 +569,7 @@ header.video {
     margin: 1%; } }
 
 .testimonials {
-  background-color: #222;
+  background-color: #111;
   text-align: center; }
   .testimonials .testimonials-carousel .item .testimonial-img {
     display: inline-block;
