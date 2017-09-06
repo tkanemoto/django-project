@@ -43,7 +43,7 @@ class ClientAdmin(OrderedModelAdmin):
         return qs.filter(owner=request.user)
 
     def save_model(self, request, obj, form, change):
-        if form.data['owner'] is None or form.data['owner'] == '':
+        if 'owner' not in form.data or form.data['owner'] is None or form.data['owner'] == '':
             obj.owner = request.user
         super(ClientAdmin, self).save_model(request, obj, form, change)
 
