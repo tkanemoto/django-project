@@ -183,7 +183,7 @@
             <div class="overlay"></div>
             <div class="container-fluid">
                 <div class="row h-100">
-                    <div class="col-md-5 push-md-7 my-auto">
+                    <div class="col-md-6 push-md-{{ client.showreel_url | yesno:'6,3' }} my-auto">
                         <div class="project-details">
                             <span class="project-name">{{ client.name }}</span>
                             <span class="project-description">{{ client.description | safe }}</span>
@@ -199,7 +199,7 @@
                                     </ul>
                                     {% if project.url %}
                                     <div class="actions">
-                                        <a class="btn btn-xs btn-default" href="{{ project.url }}">More info</a>
+                                        <a class="btn btn-xs btn-default" href="{{ project.url }}">Link</a>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -207,7 +207,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7 pull-md-5 hidden-xs my-auto">
+                    {% if client.showreel_url %}
+                    <div class="col-md-6 pull-md-6 hidden-xs my-auto">
                         <div class="device-container">
                             <div class="device-mockup samsung_tv landscape black">
                                 <div class="device">
@@ -218,6 +219,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
