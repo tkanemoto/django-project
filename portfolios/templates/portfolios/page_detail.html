@@ -249,8 +249,10 @@
                     <div class="portfolio-wrapper">
                         <div class="project-details">
                             <div class="project-title" {% if client.background %}style="background-image: url('{{ client.background.url }}')"{% endif %}>
-                                <span class="project-name">{{ client.name }}</span>
-                                <span class="project-description">{{ client.description }}</span>
+                                <div class="overlay">
+                                    <span class="project-name">{{ client.name }}</span>
+                                    <span class="project-description">{{ client.description | safe }}</span>
+                                </div>
                             </div>
                             <div class="caption">
                                 <div class="caption-text">
