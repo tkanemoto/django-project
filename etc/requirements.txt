@@ -22,3 +22,4 @@ python-social-auth[django]
 requests>=2.4.3
 requests-oauthlib
 transmissionrpc
+django_compressor

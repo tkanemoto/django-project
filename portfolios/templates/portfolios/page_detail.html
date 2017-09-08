@@ -11,12 +11,10 @@
 
     <title>{{ object.title }}</title>
 
+    {% load compress %}
+    {% compress css %}
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-
-    <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
 
     <!-- 3rd party CSS -->
     <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -40,6 +38,11 @@
         }
     }
     </style>
+    {% endcompress %}
+
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -383,6 +386,7 @@
     </div>
     {% endif %}
 
+    {% compress js %}
     <!-- Bootstrap core JavaScript -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'vendor/tether/tether.min.js' %}"></script>
@@ -399,6 +403,7 @@
     <!-- Custom scripts for this theme -->
     <script src="{% static 'js/creative.js' %}"></script>
     <script src="{% static 'js/creative-mixitup.js' %}"></script>
+    {% endcompress %}
 
 </body>
 

@@ -11,6 +11,21 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_OUTPUT_DIR = 'compressed'
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.datauri.CssDataUriFilter',
+    'compressor.filters.css_default.CssRelativeFilter',
+    'compressor.filters.cssmin.rCSSMinFilter',
+]
+COMPRESS_DATA_URI_MAX_SIZE = 1000000
+
 INSTALLED_APPS += (
     'portfolios',
     'storages',
@@ -48,6 +63,7 @@ INSTALLED_APPS += (
     'basic.profiles',
     #'basic.relationships',
     'basic.tools',
+    'compressor',
 )
 
 COMMENTS_APP = 'basic.comments'
