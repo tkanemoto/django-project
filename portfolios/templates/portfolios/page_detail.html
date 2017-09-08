@@ -246,9 +246,9 @@
 
                 {% for client in object.clients.all %}{% with forloop.counter as counter %}
                 <div class="grid-item mix {% if counter > object.number_of_featured_clients %}default{% endif %} {{ client.products | join:' ' | lower }}" href="{{ client.showreel_url }}" title="{{ client.name }}">
-                    <div class="portfolio-wrapper" {% if client.background %}style="background-image: url('{{ client.background.url }}')"{% endif %}>
+                    <div class="portfolio-wrapper">
                         <div class="project-details">
-                            <div class="project-title">
+                            <div class="project-title" {% if client.background %}style="background-image: url('{{ client.background.url }}')"{% endif %}>
                                 <span class="project-name">{{ client.name }}</span>
                                 <span class="project-description">{{ client.description }}</span>
                             </div>
