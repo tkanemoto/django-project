@@ -101,6 +101,12 @@ class Project(OrderedModel):
     def __unicode__(self):
         return '{}'.format(self.name)
 
+    def role_names(self):
+        return self.roles.all().values_list('name', flat=True).distinct()
+
+    def products(self):
+        return self.roles.all().values_list('product', flat=True).distinct()
+
 
 class Testimonial(OrderedModel):
     author = models.ForeignKey('Client')

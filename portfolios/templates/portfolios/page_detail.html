@@ -241,8 +241,8 @@
             </div>
             <div class="portfolio-grid clearfix" id="portfolioList">
 
-                {% for client in object.non_featured_clients %}
-                <div class="mix {{ client.products | join:' ' | lower }}" href="{{ client.showreel_url }}" title="{{ client.name }}">
+                {% for client in object.clients.all %}{% with forloop.counter as counter %}
+                <div class="grid-item mix {% if counter > object.number_of_featured_clients %}default{% endif %} {{ client.products | join:' ' | lower }}" href="{{ client.showreel_url }}" title="{{ client.name }}">
                     <div class="portfolio-wrapper" {% if client.background %}style="background-image: url('{{ client.background.url }}')"{% endif %}>
                         <div class="project-details">
                             <div class="project-title">
@@ -253,7 +253,7 @@
                                 <div class="caption-text">
                                     <div class="project-list">
                                         {% for project in client.project_set.all %}
-                                        <div class="project-item">
+                                        <div class="project-item mix {% if counter > object.number_of_featured_clients %}default{% endif %} {{ project.products | join:' ' | lower }}">
                                             <div class="date-label"><i class="fa fa-film"></i><div class="year">{{ project.date }}</div></div>
                                             <h3 class="title">{{ project.name }}</h3>
                                             <ul class="meta-list list-inline">
@@ -269,7 +269,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+                {% endwith %}{% endfor %}
 
             </div>
         </div>
