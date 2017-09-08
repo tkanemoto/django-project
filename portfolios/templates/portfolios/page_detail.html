@@ -186,7 +186,7 @@
             <div class="overlay"></div>
             <div class="container-fluid">
                 <div class="row h-100">
-                    <div class="col-md-6 push-md-{{ client.showreel_url | yesno:'6,3' }} my-auto">
+                    <div class="col-md-{{ client.showreel_url | yesno:'6,8' }} push-md-{{ client.showreel_url | yesno:'6,2' }} my-auto">
                         <div class="project-details">
                             <span class="project-name">{{ client.name }}</span>
                             <span class="project-description">{{ client.description | safe }}</span>
