@@ -291,7 +291,7 @@
                     <div class="testimonials-carousel owl-carousel owl-theme">
                         {% for testimonial in object.testimonial_set.all %}
                         <div class="item mb-4">
-                            <p class="lead">"{{ testimonial.title }}"</p>
+                            <p class="lead"><i class="quotation-mark fa fa-quote-left"></i>{{ testimonial.title }}<i class="quotation-mark fa fa-quote-right"></i></p>
                             <hr class="colored">
                             <p>{{ testimonial.body }}</p>
                             <div class="testimonial-img">

@@ -987,3 +987,14 @@ a.text-primary {
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
   background: #EF4035; }
+
+.testimonials .lead {
+  margin: 15px 0; }
+.testimonials .lead .quotation-mark {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.33);
+  position: relative; }
+  .testimonials .lead .quotation-mark.fa-quote-left {
+    margin: 0 15px 0 0; top: -10px; }
+  .testimonials .lead .quotation-mark.fa-quote-right {
+    margin: 0 0 0 15px; bottom: -10px; }
