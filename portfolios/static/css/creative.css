@@ -910,15 +910,15 @@ a.text-primary {
   color: #EF4035;
   font-size: 16px;
 }
-.project-details .project-list .actions {
+.project-details .actions {
   position: absolute;
   right: 0;
   top: 15px;
 }
-.project-details .project-list .actions .btn {
+.project-details .actions .btn {
   margin-right: 5px;
 }
-.project-details .project-list .actions .btn:last-child {
+.project-details .actions .btn:last-child {
   margin-right: 0;
 }
 .project-details .project-list .info-extra {

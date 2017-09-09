@@ -188,6 +188,9 @@
                 <div class="row h-100">
                     <div class="col-md-{{ client.showreel_url | yesno:'6,8' }} push-md-{{ client.showreel_url | yesno:'6,2' }} my-auto">
                         <div class="project-details">
+                            <div class="actions">
+                                <a class="btn btn-xs btn-default" href="{{ client.link }}" target="_blank">Website</a>
+                            </div>
                             <span class="project-name">{{ client.name }}</span>
                             <span class="project-description">{{ client.description | safe }}</span>
                             <hr class="colored">
@@ -202,7 +205,7 @@
                                     </ul>
                                     {% if project.url %}
                                     <div class="actions">
-                                        <a class="btn btn-xs btn-default" href="{{ project.url }}">Link</a>
+                                        <a class="btn btn-xs btn-default" href="{{ project.url }}" target="_blank">Link</a>
                                     </div>
                                     {% endif %}
                                 </div>
@@ -355,7 +358,7 @@
                     </ul>
                 </div>
             </div>
-            <p class="copyright">&copy; 2017 {{ object.owner.get_full_name }} - Designed by psyClique Desgins</p>
+            <p class="copyright">&copy; {{ object.copyright }} {{ object.owner.get_full_name }} &mdash; website by <a href="https://tkanemoto.com/" target="_blank">Takeshi Kanemoto</a></p>
         </div>
     </footer>
 

@@ -27,6 +27,8 @@ class Page(models.Model):
     email = models.EmailField(null=True, blank=True, help_text='The email address people should contact you about this page')
     phone = models.CharField(null=True, blank=True, max_length=20, help_text='The contact phone number')
     address = models.TextField(null=True, blank=True, max_length=300, help_text='Postal address')
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    date_modified = models.DateTimeField(auto_now=True, editable=False)
 
     def __unicode__(self):
         return '{} {}'.format(self.title, self.description if self.description is not None else '')
@@ -46,6 +48,11 @@ class Page(models.Model):
 
     def products(self):
         return set(self.clients.all().values_list('project__roles__product', flat=True))
+
+    def copyright(self):
+        if self.date_created.year != self.date_modified.year:
+            return u'{} - {}'.format(self.date_created.year, self.date_modified.year)
+        return u'{}'.format(self.date_created.year)
 
 
 class EmbeddedContent(OrderedModel):
