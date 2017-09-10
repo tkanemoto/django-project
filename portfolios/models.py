@@ -7,6 +7,10 @@ from ordered_model.models import OrderedModel
 
 
 UPLOAD_FOLDER = 'uploads/%Y-%m-%d/'
+RE_YOUTUBE_ANY = r'^https://youtu\.?be'
+RE_YOUTUBE_FULL = r'https://youtube\.com/watch?v=(.+)$'
+RE_YOUTUBE_SHORTENED = r'https://youtu\.be/(.+)$'
+RE_YOUTUBE_REPLACEMENT = r'https://www.youtube.com/embed/\1'
 
 
 class Page(models.Model):
@@ -86,6 +90,20 @@ class Client(OrderedModel):
 
     def products(self):
         return self.project_set.all().values_list('roles__product', flat=True).distinct()
+
+    def video_url(self):
+        if self.showreel_url:
+            return self.showreel_url
+        elif self.project_set.filter(url__regex=RE_YOUTUBE_ANY).exists():
+            import re
+            p = self.project_set.filter(url__regex=RE_YOUTUBE_ANY)[0]
+            m = re.match(RE_YOUTUBE_FULL, p.url)
+            if m:
+                return re.sub(RE_YOUTUBE_FULL, RE_YOUTUBE_REPLACEMENT, p.url)
+            m = re.match(RE_YOUTUBE_SHORTENED, p.url)
+            if m:
+                return re.sub(RE_YOUTUBE_SHORTENED, RE_YOUTUBE_REPLACEMENT, p.url)
+        return ''
 
 
 class Role(models.Model):
