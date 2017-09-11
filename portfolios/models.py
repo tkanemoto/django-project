@@ -7,10 +7,12 @@ from ordered_model.models import OrderedModel
 
 
 UPLOAD_FOLDER = 'uploads/%Y-%m-%d/'
-RE_YOUTUBE_ANY = r'^https://youtu\.?be'
-RE_YOUTUBE_FULL = r'https://youtube\.com/watch?v=(.+)$'
-RE_YOUTUBE_SHORTENED = r'https://youtu\.be/(.+)$'
-RE_YOUTUBE_REPLACEMENT = r'https://www.youtube.com/embed/\1'
+RE_YOUTUBE_ANY = r'^https?://.*youtu\.?be'
+RE_YOUTUBE_FULL = r'^https?://.*youtube\.com/watch\?v=([^&]+).*$'
+RE_YOUTUBE_EMBED = r'^https?://.*youtube\.com/embed/([^?]+).*$'
+RE_YOUTUBE_SHORTENED = r'https?://youtu\.be/([^?]+).*$'
+RE_YOUTUBE_REPLACEMENT_EMBED = r'https://www.youtube.com/embed/\1'
+RE_YOUTUBE_REPLACEMENT_NORMAL = r'https://www.youtube.com/watch?v=\1'
 
 
 class Page(models.Model):
@@ -86,24 +88,33 @@ class Client(OrderedModel):
         return '{}'.format(self.name)
 
     def roles(self):
-        return self.project_set.all().values_list('roles__name', flat=True).distinct()
+        return set(self.project_set.all().values_list('roles__name', flat=True))
 
     def products(self):
-        return self.project_set.all().values_list('roles__product', flat=True).distinct()
+        return set(self.project_set.all().values_list('roles__product', flat=True))
+
+    def _youtube_url(self, url, embed=False):
+        import re
+        replacement = RE_YOUTUBE_REPLACEMENT_EMBED if embed else RE_YOUTUBE_REPLACEMENT_NORMAL
+        for pattern in [RE_YOUTUBE_FULL, RE_YOUTUBE_SHORTENED, RE_YOUTUBE_EMBED]:
+            m = re.match(pattern, url)
+            if m:
+                return re.sub(pattern, replacement, url)
+        return url
+
+    def _video_url(self, embed=False):
+        if self.showreel_url:
+            return self._youtube_url(self.showreel_url, embed)
+        elif self.project_set.filter(url__regex=RE_YOUTUBE_ANY).exists():
+            p = self.project_set.filter(url__regex=RE_YOUTUBE_ANY)[0]
+            return self._youtube_url(p.url, embed)
+        return ''
 
     def video_url(self):
-        if self.showreel_url:
-            return self.showreel_url
-        elif self.project_set.filter(url__regex=RE_YOUTUBE_ANY).exists():
-            import re
-            p = self.project_set.filter(url__regex=RE_YOUTUBE_ANY)[0]
-            m = re.match(RE_YOUTUBE_FULL, p.url)
-            if m:
-                return re.sub(RE_YOUTUBE_FULL, RE_YOUTUBE_REPLACEMENT, p.url)
-            m = re.match(RE_YOUTUBE_SHORTENED, p.url)
-            if m:
-                return re.sub(RE_YOUTUBE_SHORTENED, RE_YOUTUBE_REPLACEMENT, p.url)
-        return ''
+        return self._video_url(embed=False)
+
+    def embed_url(self):
+        return self._video_url(embed=True)
 
 
 class Role(models.Model):
@@ -127,10 +138,10 @@ class Project(OrderedModel):
         return '{}'.format(self.name)
 
     def role_names(self):
-        return self.roles.all().values_list('name', flat=True).distinct()
+        return set(self.roles.all().values_list('name', flat=True))
 
     def products(self):
-        return self.roles.all().values_list('product', flat=True).distinct()
+        return set(self.roles.all().values_list('product', flat=True))
 
 
 class Testimonial(OrderedModel):

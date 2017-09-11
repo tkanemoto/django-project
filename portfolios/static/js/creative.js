@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
 
     // Magnific Popup Settings
-    $('.mix').magnificPopup({
+    $('.grid-item.mix').magnificPopup({
         type: 'iframe'
     });
 

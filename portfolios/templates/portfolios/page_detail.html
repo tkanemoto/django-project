@@ -181,7 +181,7 @@
     <!-- Portfolio Carousel -->
     <div class="portfolio-carousel wow fadeIn owl-carousel owl-theme">
 
-        {% for client in object.featured_clients %}{% with client.video_url as video_url %}
+        {% for client in object.featured_clients %}{% with client.embed_url as video_url %}
         <div class="item" {% if client.background %}style="background-image: url('{{ client.background.url }}')"{% endif %}>
             <div class="overlay"></div>
             <div class="container-fluid">
