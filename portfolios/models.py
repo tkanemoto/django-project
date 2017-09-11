@@ -35,6 +35,7 @@ class Page(models.Model):
     address = models.TextField(null=True, blank=True, max_length=300, help_text='Postal address')
     date_created = models.DateTimeField(auto_now_add=True, editable=False)
     date_modified = models.DateTimeField(auto_now=True, editable=False)
+    keywords = models.CharField(null=True, blank=True, max_length=200)
 
     def __unicode__(self):
         return '{} {}'.format(self.title, self.description if self.description is not None else '')

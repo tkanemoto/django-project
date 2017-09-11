@@ -1,10 +1,9 @@
 {% extends "skeleton.html" %}
 
-{% load tree_menu_tags gravatar pagination_tags tagging_tags %}
+{% load tree_menu_tags gravatar pagination_tags %}
 
 {% block extrahead %}
   {% load static from staticfiles %}
-  {% tags_for_model blog.post as tags_list %}
   {{ block.super }}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,9 +12,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <meta name="description" content="{% block meta_description %}{% endblock %}">
   <meta name="author" content="{% block meta_author %}{% endblock %}">
-  <meta name="keywords" content="{{ tags_list|join:', ' }}">
-
-  <title>{% block title %}{% endblock %}</title>
+  <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 
   <link rel="stylesheet" href="{% static 'vendor/bootstrap-3.3.1/dist/css/bootstrap.min.css' %}" type="text/css"/>
   <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" type="text/css">

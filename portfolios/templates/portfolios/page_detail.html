@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ object.description }}">
     <meta name="author" content="{{ object.owner.get_full_name }}">
+    <meta name="keywords" content="{{ object.keywords }}">
 
-    <title>{{ object.title }}</title>
+    <title>{{ object.title }} - {{ object.subtitle }}</title>
 
     {% load compress %}
     {% compress css %}

@@ -97,7 +97,7 @@ class PageAdmin(admin.ModelAdmin):
             return []
         if request.user.is_superuser:
             return []
-        return ['owner']
+        return ['owner', 'keywords']
 
     def get_field_queryset(self, db, db_field, request):
         """ Only show clients belonging to the owner. """
