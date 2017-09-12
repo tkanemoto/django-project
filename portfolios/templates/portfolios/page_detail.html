@@ -1,16 +1,18 @@
 {% load static from staticfiles %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,shrink-to-fit=no">
     <meta name="description" content="{{ object.description }}">
     <meta name="author" content="{{ object.owner.get_full_name }}">
     <meta name="keywords" content="{{ object.keywords }}">
 
     <title>{{ object.title }} - {{ object.subtitle }}</title>
+
+    <link rel="canonical" href="https://www.{{ object.slug }}.com/">
 
     {% load compress %}
     {% compress css %}
@@ -40,6 +42,38 @@
     }
     </style>
     {% endcompress %}
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "mainEntityOfPage": "https://www.{{ object.slug }}.com/",
+        "headline": "{{ object.title }} - {{ object.subtitle }}",
+        "datePublished": "{{ object.date_created | date:'c' }}",
+        "dateModified": "{{ object.date_modified | date:'c' }}",
+        "description": "{{ object.description }}",
+        "author": {
+          "@type": "Person",
+          "name": "{{ object.owner.get_full_name }}"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "{{ object.owner.get_full_name }}",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ object.mugshot.url }}",
+            "width": 200,
+            "height": 200
+          }
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": "{{ object.mugshot.url }}",
+          "height": 200,
+          "width": 200
+        }
+      }
+    </script>
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
