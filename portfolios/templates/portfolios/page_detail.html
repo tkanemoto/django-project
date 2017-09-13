@@ -44,35 +44,53 @@
     {% endcompress %}
 
     <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "NewsArticle",
-        "mainEntityOfPage": "https://www.{{ object.slug }}.com/",
-        "headline": "{{ object.title }} - {{ object.subtitle }}",
-        "datePublished": "{{ object.date_created | date:'c' }}",
-        "dateModified": "{{ object.date_modified | date:'c' }}",
-        "description": "{{ object.description }}",
-        "author": {
-          "@type": "Person",
-          "name": "{{ object.owner.get_full_name }}"
-        },
-        "publisher": {
-          "@type": "Person",
-          "name": "{{ object.owner.get_full_name }}",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "{{ object.mugshot.url }}",
-            "width": 200,
-            "height": 200
+    {
+      "@context": "http://schema.org",
+      "@type": "MusicGroup",
+      "url": "https://www.{{ object.slug }}.com/",
+      "image": [
+        "{{ object.mugshot.url }}"
+       ],
+      "name": "{{ object.title }}",
+      "sameAs": "https://{{ object.slug }}.com",
+      "description": "{{ object.description }}",
+      "potentialAction": {
+        "@type": "ListenAction",
+        "target": [
+          {
+            "@type": "EntryPoint",
+            "urlTemplate": "{{ object.get_embeddedcontent_url }}",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/IOSPlatform",
+              "http://schema.org/AndroidPlatform"
+            ],
+            "inLanguage": "USD"
           }
-        },
-        "image": {
-          "@type": "ImageObject",
-          "url": "{{ object.mugshot.url }}",
-          "height": 200,
-          "width": 200
+        ],
+        "expectsAcceptanceOf": {
+          "@type": "Offer",
+          "eligibleRegion": [
+            {
+              "@type": "Country",
+              "name": "GB"
+            },
+            {
+              "@type": "Country",
+              "name": "US"
+            },
+            {
+              "@type": "Country",
+              "name": "FI"
+            },
+            {
+              "@type": "Country",
+              "name": "JP"
+            }
+          ]
         }
       }
+    }
     </script>
 
     <!-- Fonts -->

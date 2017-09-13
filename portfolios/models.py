@@ -61,6 +61,14 @@ class Page(models.Model):
             return u'{} - {}'.format(self.date_created.year, self.date_modified.year)
         return u'{}'.format(self.date_created.year)
 
+    def get_embeddedcontent_url(self):
+        if self.embeddedcontent_set.all().exists():
+            import re
+            m = re.match('<iframe .*src="([^"]+)"', self.embeddedcontent_set.all()[0].content)
+            if m:
+                return m.group(1)
+        return ''
+
 
 class EmbeddedContent(OrderedModel):
     content = models.TextField(max_length=1000, help_text='Paste in the embedded content from SoundCloud / YouTube etc.')
