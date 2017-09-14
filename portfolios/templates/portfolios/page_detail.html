@@ -132,6 +132,9 @@
                         <a class="nav-link page-scroll" href="#work">Credits</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -184,7 +187,7 @@
                 {% endif %}
                 <div class="row mt-4">
                     <div class="col-md-4">
-                        <img class="rounded-circle img-fluid img-profile" src="{{ object.mugshot.url }}" alt="">
+                        <img class="rounded-circle img-fluid img-profile" src="{{ object.mugshot.url }}" alt="Profile picture">
                     </div>
                     <div class="col-md-8 text-left mt-4">
                         {{ object.about }}
@@ -210,6 +213,38 @@
         </div>
     </section>
     {% endif %}
+
+    <section class="page-section news" id="news">
+        <div class="container">
+            <div class="text-center wow fadeIn">
+                <h2>News</h2>
+                <hr class="colored">
+                <p class="mb-0">Here's what I'm up to at the moment.</p>
+            </div>
+            <div class="row">
+                <div class="posts col-lg-10 offset-lg-1 mt-4">
+                    {% for post in object.post_set.all %}
+                    <div class="post-item media pb-3 mb-3">
+
+                        {% if post.embedded_content %}
+                        <div class="embed-responsive embed-responsive-16by9 d-flex mr-3 media-item col-md-4">
+                            {{ post.embedded_content | safe }}
+                        </div>
+                        {% elif post.image %}
+                        <img class="img-fluid d-flex mr-3 media-item col-md-3" src="{{ post.image.url }}" alt="">
+                        {% endif %}
+
+                        <div class="media-body">
+                            <h5 class="post-title mt-0">{{ post.title }}</h5>
+                            <div class="post-text">{{ post.text | safe }}</div>
+                            <div class="post-date">Posted on <time>{{ post.date }}</time></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Music Section -->
     <section class="page-section music" id="music">
@@ -346,7 +381,7 @@
     </section>
 
     <!-- Testomonials Section -->
-    <section class="page-section testimonials">
+    <section class="page-section testimonials" id="testimonials">
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">

@@ -178,3 +178,16 @@ class SocialMediaLink(OrderedModel):
     url = models.URLField('URL')
     page = models.ForeignKey('Page')
     order_with_respect_to = 'page'
+
+
+class Post(OrderedModel):
+    title = models.CharField('title', max_length=200)
+    text = models.TextField('text', max_length=1000)
+    image = models.ImageField(null=True, blank=True, upload_to=UPLOAD_FOLDER)
+    embedded_content = models.TextField(max_length=400, null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True, editable=False)
+    page = models.ForeignKey('Page')
+    order_with_respect_to = 'page'
+
+    def __unicode__(self):
+        return '{}'.format(self.title)

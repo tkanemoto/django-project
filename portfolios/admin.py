@@ -7,6 +7,14 @@ from ordered_model.admin import OrderedTabularInline, OrderedModelAdmin
 from .models import *
 
 
+class PostInline(OrderedTabularInline):
+    model = Post
+    fields = ('title', 'text', 'image', 'embedded_content', 'order', 'move_up_down_links',)
+    readonly_fields = ('order', 'move_up_down_links',)
+    extra = 1
+    ordering = ('order',)
+
+
 class EmbeddedContentInline(OrderedTabularInline):
     model = EmbeddedContent
     fields = ('content', 'order', 'move_up_down_links',)
@@ -73,6 +81,7 @@ class SocialMediaLinkInline(OrderedTabularInline):
 
 class PageAdmin(admin.ModelAdmin):
     inlines = [
+        PostInline,
         EmbeddedContentInline,
         TestimonialInline,
         SocialMediaLinkInline,
