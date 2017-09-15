@@ -49,7 +49,7 @@
       "@type": "MusicGroup",
       "url": "https://www.{{ object.slug }}.com/",
       "image": [
-        "{{ object.mugshot.url }}"
+        "{% if object.mugshot %}{{ object.mugshot.url }}{% endif %}"
        ],
       "name": "{{ object.title }}",
       "sameAs": "https://{{ object.slug }}.com",
@@ -187,7 +187,7 @@
                 {% endif %}
                 <div class="row mt-4">
                     <div class="col-md-4">
-                        <img class="rounded-circle img-fluid img-profile" src="{{ object.mugshot.url }}" alt="Profile picture">
+                        <img class="rounded-circle img-fluid img-profile" src="{% if object.mugshot %}{{ object.mugshot.url }}{% else %}https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y&d=mm{% endif %}" alt="Profile picture">
                     </div>
                     <div class="col-md-8 text-left mt-4">
                         {{ object.about }}
