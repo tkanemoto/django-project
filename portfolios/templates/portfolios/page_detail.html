@@ -227,17 +227,17 @@
             <div class="row">
                 <div class="posts col-lg-10 offset-lg-1 mt-4">
                     {% for post in object.post_set.all %}
-                    <div class="post-item media pb-3 mb-3">
+                    <div class="post-item media pb-3 mb-3 row">
 
                         {% if post.embedded_content %}
-                        <div class="embed-responsive embed-responsive-16by9 d-flex mr-3 media-item col-md-4">
+                        <div class="embed-responsive embed-responsive-16by9 d-flex mr-3 media-item col-sm-3">
                             {{ post.embedded_content | safe }}
                         </div>
                         {% elif post.image %}
-                        <img class="img-fluid d-flex mr-3 media-item col-md-3" src="{{ post.image.url }}" alt="">
+                        <img class="img-fluid d-flex mr-3 media-item col-sm-3" src="{{ post.image.url }}" alt="">
                         {% endif %}
 
-                        <div class="media-body">
+                        <div class="media-body col-sm-9">
                             <h5 class="post-title mt-0">{{ post.title }}</h5>
                             <div class="post-text">{{ post.text | safe }}</div>
                             <div class="post-date">Posted on <time>{{ post.date }}</time></div>
