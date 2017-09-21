@@ -42,7 +42,7 @@ urlpatterns = [
     # url(r'^tools/', include('basic.tools.urls')),
     # Apps
     url(r'^player/', include('player.urls')),
-    url(r'^torrent/', include('torrent.urls')),
+    url(r'^downloads/', include('torrent.urls')),
     url(r'^', include('base.urls')),
     # Login
     url('^social/', include('social_django.urls', namespace='social')),
