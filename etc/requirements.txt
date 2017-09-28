@@ -11,6 +11,7 @@ django-gravatar2
 django-localflavor
 django-openid-auth
 django-pagination
+-e git+https://github.com/tkanemoto/django-portfolios.git#egg=django-portfolios
 django-registration
 django-tagging
 -e git+https://github.com/tkanemoto/django-treemenus#egg=django-treemenus
