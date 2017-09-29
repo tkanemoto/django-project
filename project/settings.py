@@ -76,3 +76,5 @@ TEMPLATE_DEBUG = DEBUG
 if DEBUG:
     MEDIA_ROOT = BASE_DIR
     MEDIA_URL = '/media/'
+
+ADMIN_SITE_HEADER = 'Django administration'
