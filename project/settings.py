@@ -78,3 +78,10 @@ if DEBUG:
     MEDIA_URL = '/media/'
 
 ADMIN_SITE_HEADER = 'Django administration'
+
+FILE_UPLOAD_HANDLERS = [
+    'portfolios.uploadhandlers.CompressImageUploadHandler',
+    'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+]
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 262144000
