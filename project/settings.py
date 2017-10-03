@@ -43,7 +43,7 @@ INSTALLED_APPS += (
     # Apps
     'base',
     'player',
-    'torrent',
+    'dj_torrent',
     # Basic Apps
     'basic.blog',
     #'basic.bookmarks',

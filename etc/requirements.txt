@@ -14,6 +14,7 @@ django-pagination
 -e git+https://github.com/tkanemoto/django-portfolios.git#egg=django-portfolios
 django-registration
 django-tagging
+-e git+https://github.com/tkanemoto/django-torrent#egg=django-torrent
 -e git+https://github.com/tkanemoto/django-treemenus#egg=django-treemenus
 markdown2
 oauthlib>=0.7.2
