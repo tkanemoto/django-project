@@ -20,7 +20,8 @@ STATICFILES_FINDERS = (
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 COMPRESS_OUTPUT_DIR = 'compressed'
 COMPRESS_CSS_FILTERS = [
-    'compressor.filters.datauri.CssDataUriFilter',
+    #'compressor.filters.css_default.CssAbsoluteFilter',
+    #'compressor.filters.datauri.CssDataUriFilter',
     'compressor.filters.css_default.CssRelativeFilter',
     'compressor.filters.cssmin.rCSSMinFilter',
 ]
