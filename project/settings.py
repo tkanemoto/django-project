@@ -37,7 +37,6 @@ INSTALLED_APPS += (
     # Dependencies
     'django.contrib.sites',
     'tagging',
-    'pagination',
     'treemenus',
     'django_gravatar',
     'django_comments',

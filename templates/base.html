@@ -1,6 +1,6 @@
 {% extends "skeleton.html" %}
 
-{% load tree_menu_tags gravatar pagination_tags %}
+{% load tree_menu_tags gravatar %}
 
 {% block extrahead %}
   {% load static from staticfiles %}
@@ -105,7 +105,26 @@
           </div>
           <div id="content">
             {% block content %}{% endblock %}
-            {% if is_paginated %}{% paginate %}{% endif %}
+            {% if is_paginated %}
+            <nav>
+              <ul class="pagination pagination-lg">
+                {% if page_obj.has_previous %}
+                  <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo; Previous</a></li>
+                {% else %}
+                  <li class="disabled"><span class="prev">&lsaquo; Previous</span></li>
+                {% endif %}
+                {% for i in paginator.page_range %}
+                  <li class="{% if page_obj.number == i %}current active{% endif %}"><a href="?page={{ i }}{{ getvars }}" class="page">{{ i }}</a></li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                  <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">Next &rsaquo;</a></li>
+                {% else %}
+                  <li class="disabled"><span class="next">Next &rsaquo;</span></li>
+                {% endif %}
+              </ul>
+              <p>Displaying {{ page_obj.start_index }} to {{ page_obj.end_index }}  of {{ paginator.count }}</p>
+            </nav>
+            {% endif %}
           </div>
         </div>
       </div>
