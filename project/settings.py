@@ -71,6 +71,10 @@ AUTH_PROFILE_MODULE = 'profiles.Profile'
 
 SITE_ID = 1
 
+MIDDLEWARE += [
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
+]
+
 #TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
