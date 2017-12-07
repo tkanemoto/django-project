@@ -83,7 +83,7 @@ if DEBUG:
 
 ADMIN_SITE_HEADER = 'Django administration'
 
-FILE_UPLOAD_HANDLERS = [
+_FILE_UPLOAD_HANDLERS = [
     'portfolios.uploadhandlers.CompressImageUploadHandler',
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
 ]
