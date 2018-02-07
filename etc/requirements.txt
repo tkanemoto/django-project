@@ -8,7 +8,7 @@ beautifulsoup4>=4.2.1
 -e git+https://github.com/tkanemoto/django-basic-apps.git#egg=django-basic-apps
 django-contrib-comments
 django-gravatar2
-django-localflavor
+django-localflavor<2.0
 django-openid-auth
 -e git+https://github.com/tkanemoto/django-portfolios.git#egg=django-portfolios
 django-registration
@@ -24,4 +24,3 @@ requests>=2.4.3
 requests-oauthlib
 transmissionrpc
 django_compressor
-django-localflavor
