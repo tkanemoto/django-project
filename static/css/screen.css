@@ -17,6 +17,11 @@ code,
 pre {
   font-family: 'Ubuntu Mono', Consolas, monospace;
   font-size: 14px;
+  color: #ccc;
+}
+pre {
+  padding: 2px 10px;
+  background-color: #111;
 }
 
 .loading {
