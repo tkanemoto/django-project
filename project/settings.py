@@ -32,13 +32,13 @@ INSTALLED_APPS = [
     'jet',
 ] + INSTALLED_APPS
 
-INSTALLED_APPS += (
+INSTALLED_APPS += [
     'portfolios',
     'storages',
     'ordered_model',
-)
+]
 
-INSTALLED_APPS += (
+INSTALLED_APPS += [
     # Dependencies
     'django.contrib.sites',
     'tagging',
@@ -69,7 +69,7 @@ INSTALLED_APPS += (
     #'basic.relationships',
     'basic.tools',
     'compressor',
-)
+]
 
 COMMENTS_APP = 'basic.comments'
 AUTH_PROFILE_MODULE = 'profiles.Profile'
