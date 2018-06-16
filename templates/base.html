@@ -7,7 +7,7 @@
   {{ block.super }}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
   <meta name="description" content="{% block meta_description %}{% endblock %}">
@@ -16,7 +16,7 @@
 
   {% load compress %}
   {% compress css %}
-  <link rel="stylesheet" href="{% static 'vendor/bootstrap-3.3.6/css/bootstrap.min.css' %}" type="text/css"/>
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap-4.1.1/css/bootstrap.min.css' %}" type="text/css"/>
   <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" type="text/css">
   <link rel="stylesheet" href="{% static 'css/icons.css' %}" type="text/css" media="screen"/>
   <link rel="stylesheet" href="{% static 'css/screen.css' %}" type="text/css" media="screen"/>
@@ -32,7 +32,66 @@
 
 {% block body %}
   <div id="page">
-    <nav id="top-bar" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav id="top-bar" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" role="navigation">
+      <span class="navbar-brand" href="/">{{ request.site.name }}</span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        {% block navigation %}
+          <div class="navbar-nav mr-auto"></div>
+          {% show_menu "navigation" "navbar-nav" %}
+        {% endblock %}
+        <div class="mt-2 mt-md-0">
+          <ul class="mt-2 mt-md-0 navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown user-menu" id="user-profile-dropdown">
+              <a class="nav-link dropdown-toggle user-menu-toggle" data-toggle="dropdown" href="#" title="{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}">
+                <img src="{% gravatar_url request.user.email 20 %}"/>
+                <b class="caret"></b>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right popover fade bs-popover-bottom prevent-dismissal">
+                <div class="arrow" style="right: 32px"></div>
+                <div class="popover-body">
+                  <div class="media">
+                    <a class="pull-left" href="{{ request.user.get_profile.get_absolute_url }}">
+                      <img src="{% gravatar_url request.user.email 96 %}" class="media-object img-rounded"/>
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">
+                        {% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}
+                      </h4>
+                      <div class="text-muted small">{{ request.user.email }}</div>
+                      <div class="text-muted small user-profile-links">
+                        <a href="{% url "profile_edit" %}">Edit profile</a> – <a href="#">Preferences</a>
+                      </div>
+                      <a class="btn btn-primary btn-sm" href="{{ request.user.get_profile.get_absolute_url }}">View profile</a>
+                      <a class="btn btn-default" href="{% url 'admin:logout' %}?next=/"><i class="icon-off"></i> Log out</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item dropdown user-menu">
+              <a class="nav-link dropdown-toggle user-menu-toggle" data-toggle="dropdown" href="#">
+                <img src="{% gravatar_url request.user.email 20 %}"/> Log in <b class="caret"></b>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right popover fade bs-popover-bottom prevent-dismissal">
+                <div class="arrow" style="right: 32px"></div>
+                <div class="popover-body">
+                  <div class="text-center login-buttons">
+                    <a href="{% url 'social:begin' backend='google-oauth2' %}" style="display:block;height:50px;" class="abcRioButton abcRioButtonBlue"><div class="abcRioButtonContentWrapper"><div class="abcRioButtonIcon" style="padding:15px"><div style="width:18px;height:18px;" class="abcRioButtonSvgImageWithFallback abcRioButtonIconImage abcRioButtonIconImage18"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 48 48" class="abcRioButtonSvg"><g><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"></path><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"></path><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"></path><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"></path><path fill="none" d="M0 0h48v48H0z"></path></g></svg></div></div><span style="font-size:16px;line-height:48px;" class="abcRioButtonContents"><span id="not_signed_inubx56vv44scd">Sign in with Google</span><span id="connectedubx56vv44scd" style="display:none">Signed in with Google</span></span></div></a>
+                    <a class="abcRioButton facebook" href="{% url 'social:begin' backend='facebook' %}"><i class="fa fa-facebook-official fa-fw"></i> Log in with Facebook</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+      <!--
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -90,9 +149,9 @@
             </li>
             {% endif %}
           </ul>
-          {% block navigation %}{% show_menu "navigation" "nav navbar-nav navbar-right" %}{% endblock %}
         </div>
       </div>
+    -->
     </nav>
     <div class="{% block container_class %}container{% endblock %}">
       <div class="content {% block container_row_class %}{% endblock %}">
@@ -132,11 +191,13 @@
     <div id="footer" class="container">{% block footer %}{% endblock %}</div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script>
+  <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
   {% load compress %}
   {% compress js %}
   <!--<script src="{% static 'vendor/jquery.ba-hashchange.min.js' %}" type="text/javascript"></script>-->
   <script src="{% static 'vendor/jquery_lazyload-1.9.5/jquery.lazyload.min.js' %}" type="text/javascript"></script>
-  <script src="{% static 'vendor/bootstrap-3.3.6/js/bootstrap.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'vendor/popper.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'vendor/bootstrap-4.1.1/js/bootstrap.min.js' %}" type="text/javascript"></script>
   <script src="{% static 'js/bootstrap.js' %}" type="text/javascript"></script>
   {% endcompress %}
   {% block scripts %}{% endblock %}
