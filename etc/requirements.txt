@@ -25,3 +25,4 @@ requests-oauthlib
 transmissionrpc
 django_compressor
 django-jet
+google-api-python-client==1.4.1
