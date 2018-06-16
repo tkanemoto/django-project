@@ -12,28 +12,20 @@
 
 {% block content_title %}
   <h2>{{ object.title }}</h2>
-  <p class="other_posts">
+  <div class="btn-group">
     {% if object.get_previous_by_publish %}
-    <a class="previous" href="{{ object.get_previous_post.get_absolute_url }}" title="{% trans "View previous post" %}">&laquo; {{ object.get_previous_post }}</a>
+    <a class="btn previous" href="{{ object.get_previous_post.get_absolute_url }}" title="{% trans "View previous post" %}">&laquo; {{ object.get_previous_post }}</a>
     {% endif %}
     {% if object.get_next_by_publish %}
-    | <a class="next" href="{{ object.get_next_post.get_absolute_url }}" title="{% trans "View next post" %}">{{ object.get_next_post }} &raquo;</a>
+
+    <a class="btn next" href="{{ object.get_next_post.get_absolute_url }}" title="{% trans "View next post" %}">{{ object.get_next_post }} &raquo;</a>
     {% endif %}
-  </p>
+  </div>
 {% endblock %}
 
 
 {% block content %}
   {% load blog comments tagging_tags inlines markup gravatar %}
-  <div class="media">
-    <a class="media-left" href="{{ object.author.get_absolute_url }}">
-      <img src="{% gravatar_url object.author.email 48 %}" class="img-rounded"/>
-    </a>
-    <div class="media-body">
-      <h4 class="media-heading"><a href="{{ object.author.get_absolute_url }}" title="View {{ object.author.get_full_name }}'s profile">{{ object.author.get_full_name }}</a></h4>
-      <p class="date text-muted">On {{ object.publish|date:"j F Y" }}</p>
-    </div>
-  </div>
 
   <div class="body">
     {{ object.body|safe|render_inlines|markdown }}
@@ -45,6 +37,16 @@
     {{ tag_list|join:", " }}
   </p>
   {% endif %}
+
+  <div class="card bg-dark">
+    <div class="card-body">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="card-title"><a href="{{ object.author.get_absolute_url }}" title="View {{ object.author.get_full_name }}'s profile">{{ object.author.get_full_name }}</a></h5>
+        <img src="{% gravatar_url object.author.email 48 %}" class="rounded"/>
+      </div>
+      <h6 class="card-subtitle mb-2 text-muted">On {{ object.publish|date:"j F Y" }}</h6>
+    </div>
+  </div>
 
   {% render_comment_list for object %}
 

@@ -5,61 +5,57 @@
       class="comment_form form-horizontal ajax-form"
       data-action-preview="{% comment_form_target %}?preview"
       data-loading-target=".comment-post-loading">{% csrf_token %}
-  <div class="row">
-    <div class="col-md-1" style="width: 60px;">
-      {% if user.is_authenticated %}
-        {% gravatar user 48 %}
-      {% endif %}
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-header">
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item mr-2">
+          {% if user.is_authenticated %}
+            {% gravatar user 40 %}
+          {% endif %}
+        </li>
+        <li class="nav-item">
+          <a data-toggle="tab"
+             class="nav-link active"
+             href="#comment-tab-write">
+            <span class="glyphicon glyphicon-pencil"></span> Write
+          </a>
+        </li>
+        <li class="nav-item">
+          <a data-toggle="tab"
+             class="nav-link"
+             href="#comment-tab-preview"
+             data-action="preview"
+             data-action-preview-target="#comment-tab-preview .comment-preview"
+             data-action-preview-no-redirect="true">
+            <span class="glyphicon glyphicon-eye-open"></span> Preview
+          </a>
+        </li>
+      </ul>
     </div>
-    <div class="col-md-10">
-      <div class="panel panel-default popover right in">
-        <div class="arrow"></div>
-        <div class="panel-heading" style="padding-bottom: 0px">
-          <a class="text-muted small pull-right" href="http://daringfireball.net/projects/markdown/syntax" target="_blank"><span class="octicon octicon-markdown"></span> Parsed as Markdown</a>
-          <ul class="nav nav-tabs" role="tablist" style="margin-bottom: -1px">
-            <li class="active">
-              <a data-toggle="tab"
-                 href="#comment-tab-write">
-                <span class="glyphicon glyphicon-pencil"></span> Write
-              </a>
-            </li>
-            <li>
-              <a data-toggle="tab"
-                 href="#comment-tab-preview"
-                 data-action="preview"
-                 data-action-preview-target="#comment-tab-preview .comment-preview"
-                 data-action-preview-no-redirect="true">
-                <span class="glyphicon glyphicon-eye-open"></span> Preview
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="panel-body tab-content" style="padding: 15px 30px">
-          <div class="tab-pane active" id="comment-tab-write">
-            {% for field in form %}
-              {% if field.name == "honeypot" %}
-                <p style="display:none;">{{ field.label_tag }} {{ field }}</p>
+    <div class="card-body tab-content">
+      <div class="tab-pane active" id="comment-tab-write">
+        {% for field in form %}
+          {% if field.name == "honeypot" %}
+            <p style="display:none;">{{ field.label_tag }} {{ field }}</p>
+          {% else %}
+            {% if user.is_authenticated %}
+              {% if field.name == "name" or field.name == "email" or field.name == "url" %}
+                {# Ignore fields for logged in users #}
               {% else %}
-                {% if user.is_authenticated %}
-                  {% if field.name == "name" or field.name == "email" or field.name == "url" %}
-                    {# Ignore fields for logged in users #}
-                  {% else %}
-                    {{ field|format_field }}
-                  {% endif %}
-                {% else %}
-                  {{ field|format_field }}
-                {% endif %}
+                {{ field|format_field }}
               {% endif %}
-            {% endfor %}
-          </div>
-          <div class="tab-pane" id="comment-tab-preview">
-            <div class="comment-preview" style="min-height: 229px"></div>
-          </div>
-          <div class="submit text-right">
-            <span class="loading-small comment-post-loading" style="display:none"></span>
-            <input type="submit" name="post" class="btn btn-primary" value="Comment"/>
-          </div>
-        </div>
+            {% else %}
+              {{ field|format_field }}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="tab-pane" id="comment-tab-preview">
+        <div class="comment-preview" style="min-height: 302px"></div>
+      </div>
+      <div class="submit text-right">
+        <span class="loading-small comment-post-loading" style="display:none"></span>
+        <input type="submit" name="post" class="btn btn-primary" value="Comment"/>
       </div>
     </div>
   </div>

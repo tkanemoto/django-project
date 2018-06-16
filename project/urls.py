@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
+    url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLs
+    url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLs
     url(r'^admin/', admin.site.urls),
 
     # Basic Apps

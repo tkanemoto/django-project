@@ -27,6 +27,11 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_DATA_URI_MAX_SIZE = 1000000
 
+INSTALLED_APPS = [
+    'jet.dashboard',
+    'jet',
+] + INSTALLED_APPS
+
 INSTALLED_APPS += (
     'portfolios',
     'storages',

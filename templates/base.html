@@ -63,7 +63,7 @@
                       </h4>
                       <div class="text-muted small">{{ request.user.email }}</div>
                       <div class="text-muted small user-profile-links">
-                        <a href="{% url "profile_edit" %}">Edit profile</a> – <a href="#">Preferences</a>
+                        <a href="{% url 'admin:profiles_profile_change' request.user.profile.id %}">Edit profile</a> – <a href="#">Preferences</a>
                       </div>
                       <a class="btn btn-primary btn-sm" href="{{ request.user.get_profile.get_absolute_url }}">View profile</a>
                       <a class="btn btn-default" href="{% url 'admin:logout' %}?next=/"><i class="icon-off"></i> Log out</a>
@@ -104,24 +104,25 @@
           <div id="content">
             {% block content %}{% endblock %}
             {% if is_paginated %}
-            <nav>
-              <ul class="pagination pagination-lg">
+              <div class="btn-group mt-4">
                 {% if page_obj.has_previous %}
-                  <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo; Previous</a></li>
+                  <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}"
+                       class="btn previous">&laquo;</a>
                 {% else %}
-                  <li class="disabled"><span class="prev">&lsaquo; Previous</span></li>
+                  <span class="btn previous disabled text-muted">&laquo;</span>
                 {% endif %}
                 {% for i in paginator.page_range %}
-                  <li class="{% if page_obj.number == i %}current active{% endif %}"><a href="?page={{ i }}{{ getvars }}" class="page">{{ i }}</a></li>
+                  <a href="?page={{ i }}{{ getvars }}"
+                     class="btn page {% if page_obj.number == i %}current active text-primary{% endif %}">{{ i }}</a>
                 {% endfor %}
                 {% if page_obj.has_next %}
-                  <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next">Next &rsaquo;</a></li>
+                  <a href="?page={{ page_obj.next_page_number }}{{ getvars }}"
+                     class="btn next">&raquo;</a>
                 {% else %}
-                  <li class="disabled"><span class="next">Next &rsaquo;</span></li>
+                  <span class="btn next disabled text-muted">&raquo;</span>
                 {% endif %}
-              </ul>
-              <p>Displaying {{ page_obj.start_index }} to {{ page_obj.end_index }}  of {{ paginator.count }}</p>
-            </nav>
+              </div>
+              <p class="small text-muted">Displaying {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ paginator.count }}</p>
             {% endif %}
           </div>
         </div>
