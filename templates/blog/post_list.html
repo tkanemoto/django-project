@@ -17,11 +17,11 @@
       <li class="list-group-item bg-dark pl-0 pr-0">
         <div class="d-flex w-100 justify-content-between">
           <h4 class="media-heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-          <div class="date text-muted">
+          <div class="date text-muted small d-flex align-items-baseline">
             <a href="{{ post.author.get_absolute_url }}">
-              <img src="{% gravatar_url post.author.email 16 %}" class="">
+              <img src="{% gravatar_url post.author.email 16 %}" class="rounded-circle">
             </a>
-            {{ post.publish|timesince }} ago
+            <div class="p-1">{{ post.publish|timesince }} ago</div>
           </div>
         </div>
         <p class="lead tease">{{ post.tease|safe }}</p>

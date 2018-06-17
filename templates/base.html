@@ -33,21 +33,21 @@
 {% block body %}
   <div id="page" class="{% block page_class %}cover-container d-flex w-100 p-3 mx-auto flex-column{% endblock %}">
     <nav id="top-bar" class="{% block navbar_class %}navbar navbar-expand-md navbar-dark bg-dark{% endblock %}" role="navigation">
-      <span class="navbar-brand" href="/">{{ request.site.name }}</span>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="/">{{ request.site.name }}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="collapse navbar-collapse" id="navbar-collapse">
         {% block navigation %}
           <div class="navbar-nav mr-auto"></div>
           {% show_menu "navigation" "navbar-nav" %}
         {% endblock %}
-        <div class="mt-2 mt-md-0">
+        <div class="mt-2 mt-md-0 ml-4">
           <ul class="mt-2 mt-md-0 navbar-nav navbar-right">
             {% if request.user.is_authenticated %}
             <li class="nav-item dropdown user-menu" id="user-profile-dropdown">
               <a class="nav-link dropdown-toggle user-menu-toggle" data-toggle="dropdown" href="#" title="{% if request.user.get_full_name %}{{ request.user.get_full_name }}{% else %}{{ request.user.username }}{% endif %}">
-                <img src="{% gravatar_url request.user.email 20 %}" class="rounded/>
+                <img src="{% gravatar_url request.user.email 20 %}" class="rounded-circle"/>
                 <b class="caret"></b>
               </a>
               <div class="dropdown-menu dropdown-menu-right popover fade bs-popover-bottom prevent-dismissal">
@@ -55,7 +55,7 @@
                 <div class="popover-body">
                   <div class="media">
                     <a class="pull-left" href="{{ request.user.get_profile.get_absolute_url }}">
-                      <img src="{% gravatar_url request.user.email 96 %}" class="media-object rounded"/>
+                      <img src="{% gravatar_url request.user.email 96 %}" class="media-object rounded-circle"/>
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading">
@@ -74,8 +74,9 @@
             </li>
             {% else %}
             <li class="nav-item dropdown user-menu">
-              <a class="nav-link dropdown-toggle user-menu-toggle" data-toggle="dropdown" href="#">
-                <img src="{% gravatar_url request.user.email 20 %}"/> Log in <b class="caret"></b>
+              <a class="nav-link dropdown-toggle user-menu-toggle pt-1"
+                 data-toggle="dropdown"
+                 href="#">Sign in<b class="caret"></b>
               </a>
               <div class="dropdown-menu dropdown-menu-right popover fade bs-popover-bottom prevent-dismissal">
                 <div class="arrow" style="right: 32px"></div>

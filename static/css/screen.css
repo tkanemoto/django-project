@@ -101,6 +101,27 @@ body {
 #top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a:first-child { margin-left: 0px; }
 #top-bar .navbar-right .dropdown .avatar { margin: -2px 4px; }
 #top-bar > .collapse > .navbar-nav > li > a { font-weight: 700; }
+#navbar-collapse > .navbar-nav > .nav-item > .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .5);
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+#navbar-collapse > .navbar-nav > .nav-item > .nav-link:hover,
+#navbar-collapse > .navbar-nav > .nav-item > .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+#navbar-collapse > .navbar-nav > .nav-item + .nav-item {
+  margin-left: 1rem;
+}
+
+#navbar-collapse > .navbar-nav > .nav-item.active > .nav-link {
+  color: #fff;
+  border-bottom-color: #fff;
+}
 
 /* USERS */
 .user { position: relative; margin: 0 0 0 44px; }
