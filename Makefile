@@ -32,6 +32,7 @@ kwalitee: install
       find . -type f -name "*.py" | \
       grep -v '/migrations/.*\.py' | \
       grep -v '/project/.*\.py' | \
+      grep -v '/manage\.py' | \
       xargs pyflakes"
 	@echo "$(COLOR)* Running pep8$(NO_COLOR)"
 	@bash -c "\
