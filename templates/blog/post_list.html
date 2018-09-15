@@ -3,6 +3,9 @@
 {% load i18n %}
 
 {% block title %}{% trans "Ramblings" %}{% endblock %}
+{% block meta_og_title %}{% trans "Ramblings" %}{% endblock %}
+{% block meta_description %}List of my ramblings{% endblock %}
+{% block meta_og_description %}List of my ramblings{% endblock %}
 {% block body_class %}{{ block.super }} post_list{% endblock %}
 
 {% block content_title %}

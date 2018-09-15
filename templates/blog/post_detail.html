@@ -3,9 +3,11 @@
 {% load i18n %}
 
 {% block title %}{{ object.title }}{% endblock %}
+{% block meta_og_title %}{{ object.title }}{% endblock %}
 {% block body_class %}{{ block.super }} post_detail{% endblock %}
 {% block body_id %}post_{{ object.id }}{% endblock %}
 {% block meta_description %}{{ object.tease|escape }}{% endblock %}
+{% block meta_og_description %}{{ object.tease|escape }}{% endblock %}
 {% block meta_author %}{{ object.author.get_full_name }}{% endblock %}
 {% block meta_keywords %}{{ object.title }}{% endblock %}
 {% block container_row_class %}{{ block.super }} col-md-10 col-md-offset-1{% endblock %}
