@@ -1,4 +1,4 @@
-from settings_default import *
+from .settings_default import *
 
 import sys
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
@@ -30,6 +30,7 @@ COMPRESS_DATA_URI_MAX_SIZE = 1000000
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
+    'jet_django',
 ] + INSTALLED_APPS
 
 INSTALLED_APPS += [

@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+from jet_django.urls import jet_urls
 
 admin.site.site_header = settings.ADMIN_SITE_HEADER
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLs
     url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLs
+    url(r'^jet_api/', include(jet_urls)),
     url(r'^admin/', admin.site.urls),
 
     # Basic Apps

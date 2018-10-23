@@ -11,67 +11,50 @@ TEST_VERBOSITY ?= 1
 ifeq ($(VIRTUALENV_DIR),)
   VIRTUALENV_DIR := ../.virtualenv
 endif
+ifeq ($(DJANGO_SETTINGS_MODULE),)
+	DJANGO_SETTINGS_MODULE := project.settings_local
+endif
 
 LOCAL_PATH := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
+
+MANAGE := pipenv run $(LOCAL_PATH)/manage.py
 
 all: clean kwalitee test
 
 test: install
 	@echo "$(COLOR)* Launching the tests suite$(NO_COLOR)"
-	@bash -c "\
-      source $(VIRTUALENV_DIR)/bin/activate && \
-      $(LOCAL_PATH)/manage.py test \
+	$(MANAGE) test \
         -v $(TEST_VERBOSITY) --traceback \
         --liveserver=localhost:8080,8090-8100,9000-9200 \
-        $(TESTED_APPS)"
+        $(TESTED_APPS)
 
 kwalitee: install
 	@echo "$(COLOR)* Running pyflakes$(NO_COLOR)"
 	@bash -c "\
-      source $(VIRTUALENV_DIR)/bin/activate && \
+      source $(shell pipenv --venv)/bin/activate && \
       find . -type f -name "*.py" | \
       grep -v '/migrations/.*\.py' | \
       grep -v '/project/.*\.py' | \
       grep -v '/manage\.py' | \
       xargs pyflakes"
 	@echo "$(COLOR)* Running pep8$(NO_COLOR)"
-	@bash -c "\
-      source $(VIRTUALENV_DIR)/bin/activate && \
-      pep8 --config $(LOCAL_PATH)/.pep8rc \
-        --exclude=project,static,migrations ."
+	pipenv run pep8 --config $(LOCAL_PATH)/.pep8rc \
+        --exclude=project,static,migrations .
 	@echo "$(SUCCESS_COLOR)* No kwalitee errors, Congratulations ! :)$(NO_COLOR)"
 
 prepare-db: install
 	@echo "$(COLOR)* Prepare the database$(NO_COLOR)"
-	@bash -c "\
-      source $(VIRTUALENV_DIR)/bin/activate && \
-        $(LOCAL_PATH)/manage.py migrate --fake-initial treemenus --noinput --traceback && \
-        $(LOCAL_PATH)/manage.py migrate --fake-initial base --noinput --traceback && \
-        $(LOCAL_PATH)/manage.py migrate --noinput --traceback && \
-        $(LOCAL_PATH)/manage.py collectstatic --noinput --traceback"
+	$(MANAGE) migrate --fake-initial treemenus --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --fake-initial base --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) collectstatic --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 
 clean:
 	@echo "$(COLOR)* Removing useless files$(NO_COLOR)"
 	@find . -type f \( -name "*.pyc" -o -name "*~" \) -exec rm -f {} \;
 
-
-install: $(VIRTUALENV_DIR)/.freeze.list
-
-$(VIRTUALENV_DIR)/.freeze.list: $(VIRTUALENV_DIR) \
-                                $(LOCAL_PATH)/etc/requirements.txt \
-                                $(LOCAL_PATH)/Makefile
+install: $(LOCAL_PATH)/Pipfile.lock \
+         $(LOCAL_PATH)/Pipfile \
+         $(LOCAL_PATH)/Makefile
 	@echo "$(COLOR)* Installing pre-requisites$(NO_COLOR)"
-	@bash -c "\
-      export PIP_DOWNLOAD_CACHE=$$HOME/.pip-download-cache && \
-      source $(VIRTUALENV_DIR)/bin/activate && \
-      pip install pip --upgrade && \
-      pip install setuptools --upgrade && \
-      pip install pbr --upgrade && \
-      pip install --upgrade -r $(LOCAL_PATH)/etc/requirements.txt && \
-      pip freeze > $@"
-
-$(VIRTUALENV_DIR):
-	@echo "$(COLOR)* Setting up the virtualenv$(NO_COLOR)"
-	@bash -c "\
-      sudo pip install virtualenv --upgrade && \
-      virtualenv --system-site-packages $@"
+	pipenv install
