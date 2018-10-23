@@ -57,4 +57,4 @@ install: $(LOCAL_PATH)/Pipfile.lock \
          $(LOCAL_PATH)/Pipfile \
          $(LOCAL_PATH)/Makefile
 	@echo "$(COLOR)* Installing pre-requisites$(NO_COLOR)"
-	pipenv install
+	pipenv --site-packages install
