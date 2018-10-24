@@ -175,7 +175,7 @@
         "django-torrent": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-torrent.git",
-            "ref": "e6f4b0c27d35814954314742165dd84b43413595"
+            "ref": "50d0d9f7b35fc6f7b4f6e84e371121ffc5357bcd"
         },
         "django-treemenus": {
             "editable": true,
@@ -221,10 +221,10 @@
         },
         "jet-django": {
             "hashes": [
-                "sha256:b1af94c2bda2b8d6360cdcc8f9b91d7273b0842424ab32715c0c3f54dcc6e589"
+                "sha256:7a7b9c6a69170fbb611f6ae66fcb096b86c71a45e5802684982207a2ac326d04"
             ],
             "index": "pypi",
-            "version": "==0.3.9"
+            "version": "==0.4.0"
         },
         "jmespath": {
             "hashes": [
