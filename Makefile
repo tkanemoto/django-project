@@ -53,8 +53,14 @@ clean:
 	@echo "$(COLOR)* Removing useless files$(NO_COLOR)"
 	@find . -type f \( -name "*.pyc" -o -name "*~" \) -exec rm -f {} \;
 
-install: $(LOCAL_PATH)/Pipfile.lock \
-         $(LOCAL_PATH)/Pipfile \
-         $(LOCAL_PATH)/Makefile
-	@echo "$(COLOR)* Installing pre-requisites$(NO_COLOR)"
+install: $(VIRTUALENV_DIR)/.freeze
+
+$(VIRTUALENV_DIR)/.freeze: \
+  $(LOCAL_PATH)/Pipfile.lock \
+    $(LOCAL_PATH)/Pipfile \
+    $(LOCAL_PATH)/Makefile
+	@echo "$(COLOR)* Installing pipenv environment$(NO_COLOR)"
 	pipenv --site-packages install
+	rm -f $(VIRTUALENV_DIR)
+	ln -s `pipenv --venv` $(VIRTUALENV_DIR)
+	pipenv run pip freeze > $@
