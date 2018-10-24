@@ -49,6 +49,9 @@ prepare-db: install
 	$(MANAGE) migrate --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 	$(MANAGE) collectstatic --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 
+migrations:
+	$(MANAGE) makemigrations --traceback --settings $(DJANGO_SETTINGS_MODULE)
+
 clean:
 	@echo "$(COLOR)* Removing useless files$(NO_COLOR)"
 	@find . -type f \( -name "*.pyc" -o -name "*~" \) -exec rm -f {} \;
