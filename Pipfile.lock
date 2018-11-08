@@ -146,7 +146,7 @@
         "django-portfolios": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-portfolios.git",
-            "ref": "ed369c26b74a62e32394ac80f0762fb24d9f0111"
+            "ref": "bc62b68442bf6b328bc58da08b6c85f231f2db23"
         },
         "django-registration": {
             "hashes": [
@@ -175,7 +175,7 @@
         "django-torrent": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-torrent.git",
-            "ref": "671ae25b36053baaae9bda9dacccf11914c7b423"
+            "ref": "e017681bc5b537b7c0f7449c786c99a9038f5230"
         },
         "django-treemenus": {
             "editable": true,
