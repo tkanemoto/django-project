@@ -87,7 +87,7 @@
         "django-basic-apps": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-basic-apps.git",
-            "ref": "09d2556a095e2e62c27314d59ee282c81004892c"
+            "ref": "f30b61829e3b3962c5856f3edb4b49c092403f86"
         },
         "django-compressor": {
             "hashes": [
@@ -146,7 +146,7 @@
         "django-portfolios": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-portfolios.git",
-            "ref": "bc62b68442bf6b328bc58da08b6c85f231f2db23"
+            "ref": "1df7e03a1950277fdb306d34b99770dfe964ca0e"
         },
         "django-registration": {
             "hashes": [
