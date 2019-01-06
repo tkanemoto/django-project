@@ -87,7 +87,7 @@
         "django-basic-apps": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-basic-apps.git",
-            "ref": "f30b61829e3b3962c5856f3edb4b49c092403f86"
+            "ref": "18662174aa095e51d1250e09db4ea9e822c32c31"
         },
         "django-compressor": {
             "hashes": [
