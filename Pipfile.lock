@@ -146,7 +146,7 @@
         "django-portfolios": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-portfolios.git",
-            "ref": "1df7e03a1950277fdb306d34b99770dfe964ca0e"
+            "ref": "70fa18245025fc7f05c87cba05a61b6921c459ad"
         },
         "django-registration": {
             "hashes": [
