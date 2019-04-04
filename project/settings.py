@@ -69,6 +69,12 @@ INSTALLED_APPS += [
     'basic.profiles',
     #'basic.relationships',
     'basic.tools',
+    # Bingo
+    'bingo',
+    'jquery',
+    'colorful',
+    'registration',
+    # Others
     'compressor',
 ]
 
@@ -86,6 +92,15 @@ MIDDLEWARE += [
 if DEBUG:
     MEDIA_ROOT = BASE_DIR
     MEDIA_URL = '/media/'
+    ALLOWED_HOSTS = ['*']
+
+TEMPLATES[0]['OPTIONS']['context_processors'] += [
+    'bingo.context_processors.bingo',
+]
+BINGO_GAME_HARD_TIMEOUT = 1440
+BINGO_GAME_SOFT_TIMEOUT = 360
+BINGO_TWEETBUTTON_TEXT = None
+BINGO_FONT_PATH = os.path.join(BASE_DIR, 'static', 'fonts', 'Roboto-Regular.ttf')
 
 ADMIN_SITE_HEADER = 'Django administration'
 
