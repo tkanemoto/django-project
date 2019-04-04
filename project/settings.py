@@ -87,7 +87,7 @@ MIDDLEWARE += [
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
 ]
 
-#TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = DEBUG
 
 if DEBUG:
     MEDIA_ROOT = BASE_DIR
