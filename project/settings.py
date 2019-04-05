@@ -1,5 +1,6 @@
 from .settings_default import *
 
+import os
 import sys
 sys.path.append(os.path.join(BASE_DIR, 'apps'))
 
@@ -27,12 +28,9 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_DATA_URI_MAX_SIZE = 1000000
 
-try:
-    ENABLE_JET
-except NameError:
-    ENABLE_JET = True
+DISABLE_JET = bool(os.environ.get('DISABLE_JET', ''))
 
-if ENABLE_JET:
+if not DISABLE_JET:
     INSTALLED_APPS = [
         'jet.dashboard',
         'jet',

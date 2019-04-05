@@ -19,7 +19,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-if ENABLE_JET:
+if not settings.DISABLE_JET:
     from jet_django.urls import jet_urls
 
 admin.site.site_header = settings.ADMIN_SITE_HEADER
@@ -62,7 +62,7 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.ENABLE_JET:
+if not settings.DISABLE_JET:
     urlpatterns = [
         url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLs
         url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLs
