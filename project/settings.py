@@ -27,11 +27,17 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_DATA_URI_MAX_SIZE = 1000000
 
-INSTALLED_APPS = [
-    'jet.dashboard',
-    'jet',
-    'jet_django',
-] + INSTALLED_APPS
+try:
+    ENABLE_JET
+except NameError:
+    ENABLE_JET = True
+
+if ENABLE_JET:
+    INSTALLED_APPS = [
+        'jet.dashboard',
+        'jet',
+        'jet_django',
+    ] + INSTALLED_APPS
 
 INSTALLED_APPS += [
     'portfolios',
