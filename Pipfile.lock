@@ -92,7 +92,7 @@
         "django-bingo": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-bingo.git",
-            "ref": "8b73cbe9bdc7efa27f5a9cc6359655ae04a88bb9"
+            "ref": "b08609d94f2c239f890045f4283bb05d3124b8fc"
         },
         "django-colorful": {
             "hashes": [
