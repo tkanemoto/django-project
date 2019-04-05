@@ -42,6 +42,7 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     # Dependencies
     'django.contrib.sites',
+    'django.contrib.humanize',
     'tagging',
     'treemenus',
     'django_gravatar',
