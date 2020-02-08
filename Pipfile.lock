@@ -87,7 +87,7 @@
         "django-basic-apps": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-basic-apps.git",
-            "ref": "43315141e903665d895dbb081d0f161aefab2e9e"
+            "ref": "e7540578f05e6bc68b2e67aee1bb3a0ec082a796"
         },
         "django-bingo": {
             "editable": true,
@@ -200,7 +200,7 @@
         "django-torrent": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-torrent.git",
-            "ref": "a05b68f0621af573fc1d3e9db883ca2edf201325"
+            "ref": "899a73ccb03d0cb1d02a7a39b24d30d9428cf43f"
         },
         "django-treemenus": {
             "editable": true,
