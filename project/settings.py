@@ -28,9 +28,9 @@ COMPRESS_CSS_FILTERS = [
 ]
 COMPRESS_DATA_URI_MAX_SIZE = 1000000
 
-DISABLE_JET = bool(os.environ.get('DISABLE_JET', ''))
+ENABLE_JET = bool(os.environ.get('ENABLE_JET', ''))
 
-if not DISABLE_JET:
+if ENABLE_JET:
     INSTALLED_APPS = [
         'jet.dashboard',
         'jet',
@@ -76,9 +76,9 @@ INSTALLED_APPS += [
     'basic.tools',
     # Bingo
     #'bingo',
-    'jquery',
-    'colorful',
-    'registration',
+    #'jquery',
+    #'colorful',
+    #'registration',
     # Others
     'compressor',
 ]
@@ -99,13 +99,13 @@ if DEBUG:
     MEDIA_URL = '/media/'
     ALLOWED_HOSTS = ['*']
 
-TEMPLATES[0]['OPTIONS']['context_processors'] += [
-    'bingo.context_processors.bingo',
-]
-BINGO_GAME_HARD_TIMEOUT = 1440
-BINGO_GAME_SOFT_TIMEOUT = 360
-BINGO_TWEETBUTTON_TEXT = None
-BINGO_FONT_PATH = os.path.join(BASE_DIR, 'static', 'fonts', 'Roboto-Regular.ttf')
+# TEMPLATES[0]['OPTIONS']['context_processors'] += [
+#     'bingo.context_processors.bingo',
+# ]
+# BINGO_GAME_HARD_TIMEOUT = 1440
+# BINGO_GAME_SOFT_TIMEOUT = 360
+# BINGO_TWEETBUTTON_TEXT = None
+# BINGO_FONT_PATH = os.path.join(BASE_DIR, 'static', 'fonts', 'Roboto-Regular.ttf')
 
 ADMIN_SITE_HEADER = 'Django administration'
 
