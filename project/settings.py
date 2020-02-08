@@ -75,7 +75,7 @@ INSTALLED_APPS += [
     #'basic.relationships',
     'basic.tools',
     # Bingo
-    'bingo',
+    #'bingo',
     'jquery',
     'colorful',
     'registration',

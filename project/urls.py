@@ -49,7 +49,7 @@ urlpatterns = [
     # Apps
     url(r'^player/', include('player.urls')),
     url(r'^downloads/', include('dj_torrent.urls')),
-    url(r'^bingo/', include('bingo.urls')),
+    #url(r'^bingo/', include('bingo.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^', include('base.urls')),
     # Login
