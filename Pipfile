@@ -37,6 +37,7 @@ social-auth-app-django = "*"
 django-jet = "*"
 django-bingo = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-bingo.git"}
 "psycopg2" = "*"
+python-memcached = "*"
 
 [dev-packages]
 
