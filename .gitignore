@@ -6,3 +6,4 @@ apps/
 apps/.env/
 *.py-e
 db.sqlite3
+project/dev.py
