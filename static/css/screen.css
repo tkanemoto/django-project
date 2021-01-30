@@ -103,6 +103,9 @@ body.downloads {
 #top-bar .navbar-right .dropdown .dropdown-menu .user-profile-links a:first-child { margin-left: 0px; }
 #top-bar .navbar-right .dropdown .avatar { margin: -2px 4px; }
 #top-bar > .collapse > .navbar-nav > li > a { font-weight: 700; }
+#top-bar .navbar-brand > img {
+  height: 38px;
+}
 #navigation > .nav-item > .nav-link {
   padding: .25rem 0;
   font-weight: 700;

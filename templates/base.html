@@ -39,7 +39,9 @@
 {% block body %}
   <div id="page" class="{% block page_class %}cover-container d-flex w-100 p-3 mx-auto flex-column{% endblock %}">
     <nav id="top-bar" class="{% block navbar_class %}navbar navbar-expand-md navbar-dark bg-dark{% endblock %}" role="navigation">
-      <a class="navbar-brand" href="/">{{ request.site.name }}</a>
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'images/tk-transparent-background-400x300.png' %}" alt="{{ request.site.name }}">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
