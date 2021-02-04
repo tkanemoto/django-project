@@ -45,7 +45,10 @@ kwalitee: install
 prepare-db: install
 	@echo "$(COLOR)* Prepare the database$(NO_COLOR)"
 	$(MANAGE) migrate --fake-initial treemenus --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
-	$(MANAGE) migrate --fake-initial base inlines music people --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --fake-initial base --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --fake-initial inlines --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --fake-initial music --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
+	$(MANAGE) migrate --fake-initial people --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 	$(MANAGE) migrate --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 	$(MANAGE) collectstatic --noinput --traceback --settings $(DJANGO_SETTINGS_MODULE)
 
