@@ -159,7 +159,7 @@
         "django-basic-apps": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-basic-apps.git",
-            "ref": "e7540578f05e6bc68b2e67aee1bb3a0ec082a796"
+            "ref": "f921a6c994fe29a69277b54fabaa024226d34080"
         },
         "django-bingo": {
             "editable": true,
