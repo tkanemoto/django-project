@@ -38,6 +38,7 @@ django-jet = "*"
 django-bingo = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-bingo.git"}
 psycopg2 = { version = "*", sys_platform = "== 'linux'" }
 python-memcached = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 
