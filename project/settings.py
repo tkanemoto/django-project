@@ -38,9 +38,7 @@ if ENABLE_JET:
     ] + INSTALLED_APPS
 
 INSTALLED_APPS += [
-    'portfolios',
     'storages',
-    'ordered_model',
 ]
 
 INSTALLED_APPS += [
