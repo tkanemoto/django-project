@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = ">=2.0,<3.0"
 django-storages = "*"
+django-ordered-model = "<3.0.0"
 boto3 = "*"
 beautifulsoup4 = ">=4.2.1"
 django-basic-apps = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-basic-apps.git"}
