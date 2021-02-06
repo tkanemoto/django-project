@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 django = ">=2.0,<3.0"
 django-storages = "*"
-django-ordered-model = "<3.0.0"
 boto3 = "*"
 beautifulsoup4 = ">=4.2.1"
 django-basic-apps = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-basic-apps.git"}
@@ -14,7 +13,7 @@ django-contrib-comments = "*"
 django-gravatar2 = "*"
 django-localflavor = "<2.0"
 django-openid-auth = "*"
-django-portfolios = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-portfolios.git"}
+#django-portfolios = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-portfolios.git"}
 django-registration = "*"
 django-tagging = "*"
 django-torrent = {editable = true, ref = "master", git = "https://github.com/tkanemoto/django-torrent.git"}
