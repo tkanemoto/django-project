@@ -67,6 +67,13 @@ html.downloads,
 body.downloads {
   background-color: #111;
 }
+body.downloads .fixed-top, 
+body.downloads .fixed-bottom {
+  background-color: rgba(17,17,17,.87);
+}
+body.downloads .tab-content {
+  margin-bottom: 45px!important;
+}
 
 .cover-container {
   max-width: 42em;
