@@ -74,6 +74,9 @@ body.downloads .fixed-bottom {
 body.downloads .tab-content {
   margin-bottom: 45px!important;
 }
+body.downloads .table .table {
+  background-color: transparent;
+}
 
 .cover-container {
   max-width: 42em;
