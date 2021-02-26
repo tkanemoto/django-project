@@ -74,7 +74,11 @@
                         <a href="{% url 'admin:profiles_profile_change' request.user.profile.id %}">Edit profile</a> – <a href="#">Preferences</a>
                       </div>
                       <a class="btn btn-primary btn-sm" href="{{ request.user.get_profile.get_absolute_url }}">View profile</a>
-                      <a class="btn btn-default" href="{% url 'admin:logout' %}?next=/"><i class="icon-off"></i> Log out</a>
+                      {% if request.META.REMOTE_USER %}
+                        <a class="btn btn-default" href="https://tkanemoto.cloudflareaccess.com/cdn-cgi/access/logout?returnTo=https://tkanemoto.cloudflareaccess.com/"><i class="icon-off"></i> Log out</a>
+                      {% else %}
+                        <a class="btn btn-default" href="{% url 'admin:logout' %}?next=/"><i class="icon-off"></i> Log out</a>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
