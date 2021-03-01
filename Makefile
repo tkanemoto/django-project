@@ -17,7 +17,7 @@ endif
 
 LOCAL_PATH := $(patsubst %/,%,$(dir $(lastword $(MAKEFILE_LIST))))
 
-MANAGE := pipenv run $(LOCAL_PATH)/manage.py
+MANAGE := pipenv run python3 $(LOCAL_PATH)/manage.py
 
 all: clean kwalitee test
 
