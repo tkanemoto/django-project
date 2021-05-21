@@ -53,7 +53,7 @@ urlpatterns = [
     #url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^', include('base.urls')),
     # Login
-    url('^social/', include('social_django.urls', namespace='social')),
+    #url('^social/', include('social_django.urls', namespace='social')),
     url(r'^auth/', include('django.contrib.auth.urls')),
     # Portfolios
     #url(r'^portfolios/', include('portfolios.urls')),
