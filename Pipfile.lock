@@ -150,7 +150,7 @@
         "django-torrent": {
             "editable": true,
             "git": "https://github.com/tkanemoto/django-torrent.git",
-            "ref": "82192ed05a033098ac33efb8454de21543d4e356"
+            "ref": "ca715376af3b07d6a47760c0a439f8619b3b9f47"
         },
         "django-treemenus": {
             "editable": true,
